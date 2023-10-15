@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.sells.store") }}" enctype="multipart/form-data">
+        <form id="invoice_create" method="POST" action="{{ route("admin.sells.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="invoice_no">{{ trans('cruds.sell.fields.invoice_no') }}</label>
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="weight">{{ trans('cruds.sell.fields.weight') }}</label>
-                <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}" type="number" name="weight" id="weight" value="{{ old('weight', '') }}" step="0.01" required>
+                <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}" type="number" name="weight" id="weight" value="{{ old('weight', '') }}" step="0.10" required>
                 @if($errors->has('weight'))
                     <div class="invalid-feedback">
                         {{ $errors->first('weight') }}
@@ -65,7 +65,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="unit_price">{{ trans('cruds.sell.fields.unit_price') }}</label>
-                <input class="form-control {{ $errors->has('unit_price') ? 'is-invalid' : '' }}" type="number" name="unit_price" id="unit_price" value="{{ old('unit_price', '') }}" step="0.01" required>
+                <input class="form-control {{ $errors->has('unit_price') ? 'is-invalid' : '' }}" type="number" name="unit_price" id="unit_price" value="{{ old('unit_price', '') }}" step="0.10" required>
                 @if($errors->has('unit_price'))
                     <div class="invalid-feedback">
                         {{ $errors->first('unit_price') }}
@@ -104,6 +104,28 @@
     </div>
 </div>
 
+<script type="text/javascript">
+
+    document.addEventListener("DOMContentLoaded", () => {
+        var weight = document.querySelector("#weight");
+        var unitPrice = document.querySelector("#unit_price");
+        var totalAmount = document.querySelector("#total_amount");
+
+        unit_price.addEventListener('change', () => {
+                calculateTotal(totalAmount, weight.value, unitPrice.value);
+        });
+
+        weight.addEventListener('change', () => {
+                calculateTotal(totalAmount, weight.value, unitPrice.value);
+        });
+
+        const calculateTotal = (selector, weight, unitPrice) => {
+            if ( unitPrice != "" || weight != "")
+                return selector.value = (parseInt(weight) * parseFloat(unitPrice)).toFixed(2);
+        }
+    });
+
+</script>
 
 
 @endsection
