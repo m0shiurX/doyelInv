@@ -108,6 +108,27 @@
     </div>
 </div>
 
+<script type="text/javascript">
 
+document.addEventListener("DOMContentLoaded", () => {
+    var weight = document.querySelector("#weight");
+    var unitPrice = document.querySelector("#unit_price");
+    var totalAmount = document.querySelector("#total_amount");
+
+    unit_price.addEventListener('change', () => {
+            calculateTotal(totalAmount, weight.value, unitPrice.value);
+    });
+
+    weight.addEventListener('change', () => {
+            calculateTotal(totalAmount, weight.value, unitPrice.value);
+    });
+
+    const calculateTotal = (selector, weight, unitPrice) => {
+        if ( unitPrice != "" || weight != "")
+            return selector.value = (parseInt(weight) * parseFloat(unitPrice)).toFixed(2);
+    }
+});
+
+</script>
 
 @endsection

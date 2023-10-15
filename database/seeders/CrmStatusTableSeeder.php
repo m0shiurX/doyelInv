@@ -12,19 +12,13 @@ class CrmStatusTableSeeder extends Seeder
         $crmStatuses = [
             [
                 'id'         => 1,
-                'name'       => 'Lead',
+                'name'       => 'Active',
                 'created_at' => '2023-10-03 08:30:44',
                 'updated_at' => '2023-10-03 08:30:44',
             ],
             [
                 'id'         => 2,
-                'name'       => 'Customer',
-                'created_at' => '2023-10-03 08:30:44',
-                'updated_at' => '2023-10-03 08:30:44',
-            ],
-            [
-                'id'         => 3,
-                'name'       => 'Partner',
+                'name'       => 'Inactive',
                 'created_at' => '2023-10-03 08:30:44',
                 'updated_at' => '2023-10-03 08:30:44',
             ],
