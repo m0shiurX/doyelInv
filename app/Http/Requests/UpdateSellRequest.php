@@ -48,9 +48,6 @@ class UpdateSellRequest extends FormRequest
             ],
             'total_amount' => [
                 'required',
-                'integer',
-                'min:-2147483648',
-                'max:2147483647',
             ],
             'paid_status' => [
                 'required',

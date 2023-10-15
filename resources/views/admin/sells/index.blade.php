@@ -90,6 +90,12 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\Models\Sell::PAID_STATUS_RADIO as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
                         </td>
                         <td>
                         </td>
@@ -129,8 +135,7 @@
                                 {{ $sell->total_amount ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $sell->paid_status ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $sell->paid_status ? 'checked' : '' }}>
+                                {{ App\Models\Sell::PAID_STATUS_RADIO[$sell->paid_status] ?? '' }}
                             </td>
                             <td>
                                 @can('sell_show')

@@ -14,6 +14,11 @@ class Sell extends Model
 
     public $table = 'sells';
 
+    public const PAID_STATUS_RADIO = [
+        'unpaid' => 'Unpaid',
+        'paid'   => 'Paid',
+    ];
+
     protected $dates = [
         'invoice_date',
         'created_at',

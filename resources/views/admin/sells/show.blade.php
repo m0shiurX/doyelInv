@@ -84,7 +84,7 @@
                             {{ trans('cruds.sell.fields.paid_status') }}
                         </th>
                         <td>
-                            <input type="checkbox" disabled="disabled" {{ $sell->paid_status ? 'checked' : '' }}>
+                            {{ App\Models\Sell::PAID_STATUS_RADIO[$sell->paid_status] ?? '' }}
                         </td>
                     </tr>
                 </tbody>
