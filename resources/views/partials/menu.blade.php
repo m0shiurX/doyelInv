@@ -58,7 +58,7 @@
             </li>
         @endcan
         @can('invoice_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/sells*") ? "c-show" : "" }} {{ request()->is("admin/dues*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/sells*") ? "c-show" : "" }} {{ request()->is("admin/dues*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/payments*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-sticky-note c-sidebar-nav-icon">
 
@@ -93,6 +93,16 @@
 
                                 </i>
                                 {{ trans('cruds.crmCustomer.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('payment_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.payments.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/payments") || request()->is("admin/payments/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.payment.title') }}
                             </a>
                         </li>
                     @endcan

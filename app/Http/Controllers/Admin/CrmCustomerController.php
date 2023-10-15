@@ -61,7 +61,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomer->load('status', 'customerSells');
+        $crmCustomer->load('status', 'customerSells', 'customerPayments');
 
         return view('admin.crmCustomers.show', compact('crmCustomer'));
     }
