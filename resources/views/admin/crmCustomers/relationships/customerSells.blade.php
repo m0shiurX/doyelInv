@@ -90,8 +90,7 @@
                                 {{ $sell->total_amount ?? '' }}
                             </td>
                             <td>
-                                <span style="display:none">{{ $sell->paid_status ?? '' }}</span>
-                                <input type="checkbox" disabled="disabled" {{ $sell->paid_status ? 'checked' : '' }}>
+                                {{ App\Models\Sell::PAID_STATUS_RADIO[$sell->paid_status] ?? '' }}
                             </td>
                             <td>
                                 @can('sell_show')

@@ -15,8 +15,8 @@ class CreateSellsTable extends Migration
             $table->integer('quantity');
             $table->float('weight', 15, 2);
             $table->decimal('unit_price', 15, 2);
-            $table->integer('total_amount');
-            $table->boolean('paid_status')->default(0);
+            $table->decimal('total_amount', 15, 2);
+            $table->string('paid_status');
             $table->timestamps();
             $table->softDeletes();
         });

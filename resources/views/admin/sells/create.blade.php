@@ -7,7 +7,7 @@
     </div>
 
     <div class="card-body">
-        <form id="invoice_create" method="POST" action="{{ route("admin.sells.store") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.sells.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label class="required" for="invoice_no">{{ trans('cruds.sell.fields.invoice_no') }}</label>
@@ -55,7 +55,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="weight">{{ trans('cruds.sell.fields.weight') }}</label>
-                <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}" type="number" name="weight" id="weight" value="{{ old('weight', '') }}" step="0.10" required>
+                <input class="form-control {{ $errors->has('weight') ? 'is-invalid' : '' }}" type="number" name="weight" id="weight" value="{{ old('weight', '') }}" step="0.01" required>
                 @if($errors->has('weight'))
                     <div class="invalid-feedback">
                         {{ $errors->first('weight') }}
@@ -65,7 +65,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="unit_price">{{ trans('cruds.sell.fields.unit_price') }}</label>
-                <input class="form-control {{ $errors->has('unit_price') ? 'is-invalid' : '' }}" type="number" name="unit_price" id="unit_price" value="{{ old('unit_price', '') }}" step="0.10" required>
+                <input class="form-control {{ $errors->has('unit_price') ? 'is-invalid' : '' }}" type="number" name="unit_price" id="unit_price" value="{{ old('unit_price', '') }}" step="0.01" required>
                 @if($errors->has('unit_price'))
                     <div class="invalid-feedback">
                         {{ $errors->first('unit_price') }}
@@ -75,7 +75,7 @@
             </div>
             <div class="form-group">
                 <label class="required" for="total_amount">{{ trans('cruds.sell.fields.total_amount') }}</label>
-                <input class="form-control {{ $errors->has('total_amount') ? 'is-invalid' : '' }}" type="number" name="total_amount" id="total_amount" value="{{ old('total_amount', '') }}" step="1" required>
+                <input class="form-control {{ $errors->has('total_amount') ? 'is-invalid' : '' }}" type="number" name="total_amount" id="total_amount" value="{{ old('total_amount', '') }}" step="0.01" required>
                 @if($errors->has('total_amount'))
                     <div class="invalid-feedback">
                         {{ $errors->first('total_amount') }}
@@ -84,10 +84,13 @@
                 <span class="help-block">{{ trans('cruds.sell.fields.total_amount_helper') }}</span>
             </div>
             <div class="form-group">
-                <div class="form-check {{ $errors->has('paid_status') ? 'is-invalid' : '' }}">
-                    <input class="form-check-input" type="checkbox" name="paid_status" id="paid_status" value="1" required {{ old('paid_status', 0) == 1 ? 'checked' : '' }}>
-                    <label class="required form-check-label" for="paid_status">{{ trans('cruds.sell.fields.paid_status') }}</label>
-                </div>
+                <label class="required">{{ trans('cruds.sell.fields.paid_status') }}</label>
+                @foreach(App\Models\Sell::PAID_STATUS_RADIO as $key => $label)
+                    <div class="form-check {{ $errors->has('paid_status') ? 'is-invalid' : '' }}">
+                        <input class="form-check-input" type="radio" id="paid_status_{{ $key }}" name="paid_status" value="{{ $key }}" {{ old('paid_status', 'unpaid') === (string) $key ? 'checked' : '' }} required>
+                        <label class="form-check-label" for="paid_status_{{ $key }}">{{ $label }}</label>
+                    </div>
+                @endforeach
                 @if($errors->has('paid_status'))
                     <div class="invalid-feedback">
                         {{ $errors->first('paid_status') }}
@@ -104,28 +107,6 @@
     </div>
 </div>
 
-<script type="text/javascript">
-
-    document.addEventListener("DOMContentLoaded", () => {
-        var weight = document.querySelector("#weight");
-        var unitPrice = document.querySelector("#unit_price");
-        var totalAmount = document.querySelector("#total_amount");
-
-        unit_price.addEventListener('change', () => {
-                calculateTotal(totalAmount, weight.value, unitPrice.value);
-        });
-
-        weight.addEventListener('change', () => {
-                calculateTotal(totalAmount, weight.value, unitPrice.value);
-        });
-
-        const calculateTotal = (selector, weight, unitPrice) => {
-            if ( unitPrice != "" || weight != "")
-                return selector.value = (parseInt(weight) * parseFloat(unitPrice)).toFixed(2);
-        }
-    });
-
-</script>
 
 
 @endsection
