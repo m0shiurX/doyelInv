@@ -189,5 +189,23 @@ return [
         'title'          => 'Dues',
         'title_singular' => 'Due',
     ],
+    'payment' => [
+        'title'          => 'Payments',
+        'title_singular' => 'Payment',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'amount'            => 'Amount',
+            'amount_helper'     => ' ',
+            'customer'          => 'Customer',
+            'customer_helper'   => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
 
 ];

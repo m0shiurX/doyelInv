@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class CrmCustomer extends Model
+class Payment extends Model
 {
     use SoftDeletes, HasFactory;
 
-    public $table = 'crm_customers';
+    public $table = 'payments';
 
     protected $dates = [
         'created_at',
@@ -20,12 +20,8 @@ class CrmCustomer extends Model
     ];
 
     protected $fillable = [
-        'first_name',
-        'last_name',
-        'status_id',
-        'email',
-        'phone',
-        'address',
+        'amount',
+        'customer_id',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -36,18 +32,8 @@ class CrmCustomer extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function customerSells()
+    public function customer()
     {
-        return $this->hasMany(Sell::class, 'customer_id', 'id');
-    }
-
-    public function customerPayments()
-    {
-        return $this->hasMany(Payment::class, 'customer_id', 'id');
-    }
-
-    public function status()
-    {
-        return $this->belongsTo(CrmStatus::class, 'status_id');
+        return $this->belongsTo(CrmCustomer::class, 'customer_id');
     }
 }

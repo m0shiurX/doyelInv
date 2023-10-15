@@ -92,10 +92,18 @@
                 {{ trans('cruds.sell.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#customer_payments" role="tab" data-toggle="tab">
+                {{ trans('cruds.payment.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="customer_sells">
             @includeIf('admin.crmCustomers.relationships.customerSells', ['sells' => $crmCustomer->customerSells])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="customer_payments">
+            @includeIf('admin.crmCustomers.relationships.customerPayments', ['payments' => $crmCustomer->customerPayments])
         </div>
     </div>
 </div>
