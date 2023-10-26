@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use DateTimeInterface;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -14,6 +15,7 @@ class Payment extends Model
     public $table = 'payments';
 
     protected $dates = [
+        'payment_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -22,6 +24,7 @@ class Payment extends Model
     protected $fillable = [
         'amount',
         'customer_id',
+        'payment_date',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -35,5 +38,9 @@ class Payment extends Model
     public function customer()
     {
         return $this->belongsTo(CrmCustomer::class, 'customer_id');
+    }
+    public function setPaymentDateAttribute($value)
+    {
+        $this->attributes['payment_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
     }
 }

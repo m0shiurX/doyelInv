@@ -64,16 +64,6 @@
                 <span class="help-block">{{ trans('cruds.sell.fields.weight_helper') }}</span>
             </div>
             <div class="form-group">
-                <label class="required" for="unit_price">{{ trans('cruds.sell.fields.unit_price') }}</label>
-                <input class="form-control {{ $errors->has('unit_price') ? 'is-invalid' : '' }}" type="number" name="unit_price" id="unit_price" value="{{ old('unit_price', '') }}" step="0.01" required>
-                @if($errors->has('unit_price'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('unit_price') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.sell.fields.unit_price_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label class="required" for="total_amount">{{ trans('cruds.sell.fields.total_amount') }}</label>
                 <input class="form-control {{ $errors->has('total_amount') ? 'is-invalid' : '' }}" type="number" name="total_amount" id="total_amount" value="{{ old('total_amount', '') }}" step="0.01" required>
                 @if($errors->has('total_amount'))
@@ -87,7 +77,7 @@
                 <label class="required">{{ trans('cruds.sell.fields.paid_status') }}</label>
                 @foreach(App\Models\Sell::PAID_STATUS_RADIO as $key => $label)
                     <div class="form-check {{ $errors->has('paid_status') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" type="radio" id="paid_status_{{ $key }}" name="paid_status" value="{{ $key }}" {{ old('paid_status', 'unpaid') === (string) $key ? 'checked' : '' }} required>
+                        <input class="form-check-input" disabled type="radio" id="paid_status_{{ $key }}" name="paid_status" value="{{ $key }}" {{ old('paid_status', 'unpaid') === (string) $key ? 'checked' : '' }} required>
                         <label class="form-check-label" for="paid_status_{{ $key }}">{{ $label }}</label>
                     </div>
                 @endforeach
@@ -106,28 +96,5 @@
         </form>
     </div>
 </div>
-
-<script type="text/javascript">
-
-document.addEventListener("DOMContentLoaded", () => {
-    var weight = document.querySelector("#weight");
-    var unitPrice = document.querySelector("#unit_price");
-    var totalAmount = document.querySelector("#total_amount");
-
-    unit_price.addEventListener('change', () => {
-            calculateTotal(totalAmount, weight.value, unitPrice.value);
-    });
-
-    weight.addEventListener('change', () => {
-            calculateTotal(totalAmount, weight.value, unitPrice.value);
-    });
-
-    const calculateTotal = (selector, weight, unitPrice) => {
-        if ( unitPrice != "" || weight != "")
-            return selector.value = (parseInt(weight) * parseFloat(unitPrice)).toFixed(2);
-    }
-});
-
-</script>
 
 @endsection

@@ -10,6 +10,17 @@
         <form method="POST" action="{{ route("admin.crm-customers.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
+                <label for="account_no">{{ trans('cruds.crmCustomer.fields.account_no') }}</label>
+                <input class="form-control {{ $errors->has('account_no') ? 'is-invalid' : '' }}" type="text" name="account_no" id="account_no" value="{{ old('account_no', '') }}">
+                @if($errors->has('account_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('account_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.crmCustomer.fields.account_no_helper') }}</span>
+            </div>
+
+            <div class="form-group">
                 <label class="required" for="first_name">{{ trans('cruds.crmCustomer.fields.first_name') }}</label>
                 <input class="form-control {{ $errors->has('first_name') ? 'is-invalid' : '' }}" type="text" name="first_name" id="first_name" value="{{ old('first_name', '') }}" required>
                 @if($errors->has('first_name'))

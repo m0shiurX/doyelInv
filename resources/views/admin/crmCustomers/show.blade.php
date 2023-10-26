@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.crmCustomer.fields.account_no') }}
+                        </th>
+                        <td>
+                            {{ $crmCustomer->account_no }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.crmCustomer.fields.first_name') }}
                         </th>
                         <td>

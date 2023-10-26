@@ -26,13 +26,16 @@
                             {{ trans('cruds.payment.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.payment.fields.amount') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.payment.fields.customer') }}
                         </th>
                         <th>
-                            {{ trans('cruds.crmCustomer.fields.phone') }}
+                            {{ trans('cruds.crmCustomer.fields.account_no') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.payment.fields.amount') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.payment.fields.payment_date') }}
                         </th>
                         <th>
                             &nbsp;
@@ -48,14 +51,18 @@
                             <td>
                                 {{ $payment->id ?? '' }}
                             </td>
-                            <td>
-                                {{ $payment->amount ?? '' }}
-                            </td>
+
                             <td>
                                 {{ $payment->customer->first_name ?? '' }}
                             </td>
                             <td>
-                                {{ $payment->customer->phone ?? '' }}
+                                {{ $payment->customer->account_no ?? '' }}
+                            </td>
+                             <td>
+                                {{ $payment->amount ?? '' }}
+                            </td>
+                            <td>
+                                {{ $payment->payment_date ?? '' }}
                             </td>
                             <td>
 
@@ -131,7 +138,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

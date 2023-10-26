@@ -26,10 +26,10 @@
                             {{ trans('cruds.crmCustomer.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.crmCustomer.fields.first_name') }}
+                            {{ trans('cruds.crmCustomer.fields.full_name') }}
                         </th>
                         <th>
-                            {{ trans('cruds.crmCustomer.fields.last_name') }}
+                            {{ trans('cruds.crmCustomer.fields.account_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.crmCustomer.fields.status') }}
@@ -61,7 +61,7 @@
                                 {{ $crmCustomer->first_name ?? '' }}
                             </td>
                             <td>
-                                {{ $crmCustomer->last_name ?? '' }}
+                                {{ $crmCustomer->account_no ?? '' }}
                             </td>
                             <td>
                                 {{ $crmCustomer->status->name ?? '' }}
@@ -154,7 +154,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

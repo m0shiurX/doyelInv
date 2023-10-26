@@ -11,6 +11,16 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label for="payment_date">{{ trans('cruds.payment.fields.payment_date') }}</label>
+                <input class="form-control date {{ $errors->has('payment_date') ? 'is-invalid' : '' }}" type="text" name="payment_date" id="payment_date" value="{{ old('payment_date', $payment->payment_date) }}">
+                @if($errors->has('payment_date'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('payment_date') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.payment.fields.payment_date_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="amount">{{ trans('cruds.payment.fields.amount') }}</label>
                 <input class="form-control {{ $errors->has('amount') ? 'is-invalid' : '' }}" type="number" name="amount" id="amount" value="{{ old('amount', $payment->amount) }}" step="0.01" required>
                 @if($errors->has('amount'))

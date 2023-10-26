@@ -32,7 +32,6 @@ class Sell extends Model
         'customer_id',
         'quantity',
         'weight',
-        'unit_price',
         'total_amount',
         'paid_status',
         'created_at',

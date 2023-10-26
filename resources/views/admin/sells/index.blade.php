@@ -44,9 +44,6 @@
                             {{ trans('cruds.sell.fields.weight') }}
                         </th>
                         <th>
-                            {{ trans('cruds.sell.fields.unit_price') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.sell.fields.total_amount') }}
                         </th>
                         <th>
@@ -127,9 +124,6 @@
                             </td>
                             <td>
                                 {{ $sell->weight ?? '' }}
-                            </td>
-                            <td>
-                                {{ $sell->unit_price ?? '' }}
                             </td>
                             <td>
                                 {{ $sell->total_amount ?? '' }}
@@ -216,7 +210,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false

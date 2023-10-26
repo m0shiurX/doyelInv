@@ -24,6 +24,10 @@ class UpdatePaymentRequest extends FormRequest
                 'required',
                 'integer',
             ],
+            'payment_date' => [
+                'date_format:' . config('panel.date_format'),
+                'nullable',
+            ],
         ];
     }
 }

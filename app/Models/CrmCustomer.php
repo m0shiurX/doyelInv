@@ -26,10 +26,12 @@ class CrmCustomer extends Model
         'email',
         'phone',
         'address',
+        'account_no',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
+    protected $appends = ['due'];
 
     protected function serializeDate(DateTimeInterface $date)
     {
@@ -44,6 +46,16 @@ class CrmCustomer extends Model
     public function customerPayments()
     {
         return $this->hasMany(Payment::class, 'customer_id', 'id');
+    }
+
+    public function unPaidSells()
+    {
+        return $this->hasMany(Sell::class, 'customer_id', 'id')->where('paid_status', 'unpaid');
+    }
+
+    public function getDueAttribute()
+    {
+        return $this->withSum('unPaidSells', 'total_amount')->get();
     }
 
     public function status()

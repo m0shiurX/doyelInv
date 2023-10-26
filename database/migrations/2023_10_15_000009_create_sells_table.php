@@ -14,7 +14,6 @@ class CreateSellsTable extends Migration
             $table->date('invoice_date')->nullable();
             $table->integer('quantity');
             $table->float('weight', 15, 2);
-            $table->decimal('unit_price', 15, 2);
             $table->decimal('total_amount', 15, 2);
             $table->string('paid_status');
             $table->timestamps();

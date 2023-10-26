@@ -43,9 +43,6 @@ class StoreSellRequest extends FormRequest
                 'required',
                 'min:0',
             ],
-            'unit_price' => [
-                'required',
-            ],
             'total_amount' => [
                 'required',
             ],

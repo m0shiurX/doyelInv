@@ -65,14 +65,6 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.sell.fields.unit_price') }}
-                        </th>
-                        <td>
-                            {{ $sell->unit_price }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
                             {{ trans('cruds.sell.fields.total_amount') }}
                         </th>
                         <td>

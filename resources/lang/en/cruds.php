@@ -91,6 +91,7 @@ return [
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
+            'full_name'              => 'Full name',
             'first_name'        => 'First name',
             'first_name_helper' => ' ',
             'last_name'         => 'Last name',
@@ -103,6 +104,8 @@ return [
             'phone_helper'      => ' ',
             'address'           => 'Address',
             'address_helper'    => ' ',
+            'account_no'           => 'Account No',
+            'account_no_helper'    => ' ',
             'created_at'        => 'Created at',
             'created_at_helper' => ' ',
             'updated_at'        => 'Updated At',
@@ -205,6 +208,8 @@ return [
             'updated_at_helper' => ' ',
             'deleted_at'        => 'Deleted at',
             'deleted_at_helper' => ' ',
+            'payment_date'        => 'Payment Date',
+            'payment_date_helper' => ' ',
         ],
     ],
 

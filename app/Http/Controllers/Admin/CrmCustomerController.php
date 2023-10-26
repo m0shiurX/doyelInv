@@ -18,7 +18,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomers = CrmCustomer::with(['status'])->get();
+        $crmCustomers = CrmCustomer::with(['status', 'unPaidSells'])->get();
 
         return view('admin.crmCustomers.index', compact('crmCustomers'));
     }
