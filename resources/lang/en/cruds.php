@@ -212,5 +212,24 @@ return [
             'payment_date_helper' => ' ',
         ],
     ],
-
+    'stock' => [
+        'title'          => 'Stock',
+        'title_singular' => 'Stock',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'quantity'          => 'Quantity',
+            'quantity_helper'   => ' ',
+            'weight'            => 'Weight',
+            'weight_helper'     => ' ',
+            'amount'            => 'Amount',
+            'amount_helper'     => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
 ];

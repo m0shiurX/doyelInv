@@ -57,6 +57,16 @@
                 </ul>
             </li>
         @endcan
+        @can('stock_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.stocks.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/stocks") || request()->is("admin/stocks/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-database c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.stock.title') }}
+                </a>
+            </li>
+        @endcan
         @can('invoice_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/sells*") ? "c-show" : "" }} {{ request()->is("admin/dues*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/payments*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">

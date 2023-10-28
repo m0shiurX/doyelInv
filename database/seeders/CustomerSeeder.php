@@ -20,7 +20,7 @@ class CustomerSeeder extends Seeder
             'last_name' => 'Name',
             'address' => 'Address goes here',
             'phone' => '88017x',
-            'acc' => '88017x',
+            'account_no' => '88017x',
             'email' => Str::random(10) . '@gmail.com',
             'status_id' => 1,
         ]);

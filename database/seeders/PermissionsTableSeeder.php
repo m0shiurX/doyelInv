@@ -220,6 +220,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 53,
+                'title' => 'stock_create',
+            ],
+            [
+                'id'    => 54,
+                'title' => 'stock_edit',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'stock_show',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'stock_delete',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'stock_access',
+            ],
+            [
+                'id'    => 58,
                 'title' => 'profile_password_edit',
             ],
         ];

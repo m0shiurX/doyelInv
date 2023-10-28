@@ -54,6 +54,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Payments
     Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
     Route::resource('payments', 'PaymentsController', ['except' => ['show']]);
+
+    // Stock
+    Route::delete('stocks/destroy', 'StockController@massDestroy')->name('stocks.massDestroy');
+    Route::resource('stocks', 'StockController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
