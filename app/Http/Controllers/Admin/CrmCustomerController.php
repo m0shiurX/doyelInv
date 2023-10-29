@@ -11,6 +11,7 @@ use App\Models\CrmStatus;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use App\Events\CustomerCreated;
 
 class CrmCustomerController extends Controller
 {
@@ -18,7 +19,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomers = CrmCustomer::with(['status', 'unPaidSells'])->get();
+        $crmCustomers = CrmCustomer::with(['status'])->get();
 
         return view('admin.crmCustomers.index', compact('crmCustomers'));
     }
@@ -35,7 +36,7 @@ class CrmCustomerController extends Controller
     public function store(StoreCrmCustomerRequest $request)
     {
         $crmCustomer = CrmCustomer::create($request->all());
-
+        event(new CustomerCreated($crmCustomer)); // Dispatch the event
         return redirect()->route('admin.crm-customers.index');
     }
 
@@ -61,7 +62,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomer->load('status', 'customerSells', 'customerPayments');
+        $crmCustomer->load('status', 'customerSells', 'customerPayments', 'customerCustomerDues');
 
         return view('admin.crmCustomers.show', compact('crmCustomer'));
     }
