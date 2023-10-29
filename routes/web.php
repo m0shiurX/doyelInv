@@ -53,6 +53,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Payments
     Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
+    Route::get('payments/initial_due', 'PaymentsController@initial_due')->name('payments.initial_due');
+    Route::post('payments/store_initial_due', 'PaymentsController@store_initial_due')->name('payments.store_initial_due');
     Route::resource('payments', 'PaymentsController', ['except' => ['show']]);
 
     // Stock

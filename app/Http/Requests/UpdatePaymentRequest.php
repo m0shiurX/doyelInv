@@ -19,6 +19,8 @@ class UpdatePaymentRequest extends FormRequest
         return [
             'amount' => [
                 'required',
+                'numeric',
+                'min:1',
             ],
             'customer_id' => [
                 'required',

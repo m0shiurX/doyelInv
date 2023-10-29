@@ -1,7 +1,7 @@
 @can('payment_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.payments.create') }}">
+            <a class="btn btn-success m-2" href="{{ route('admin.payments.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.payment.title_singular') }}
             </a>
         </div>
@@ -127,7 +127,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

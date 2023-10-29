@@ -195,6 +195,7 @@ return [
     'payment' => [
         'title'          => 'Payments',
         'title_singular' => 'Payment',
+        'initial_due'         => 'Initial Due',
         'fields'         => [
             'id'                => 'ID',
             'id_helper'         => ' ',
