@@ -48,14 +48,9 @@ class CrmCustomer extends Model
         return $this->hasMany(Payment::class, 'customer_id', 'id');
     }
 
-    public function unPaidSells()
+    public function customerCustomerDues()
     {
-        return $this->hasMany(Sell::class, 'customer_id', 'id')->where('paid_status', 'unpaid');
-    }
-
-    public function getDueAttribute()
-    {
-        return $this->withSum('unPaidSells', 'total_amount')->get();
+        return $this->hasMany(CustomerDue::class, 'customer_id', 'id');
     }
 
     public function status()

@@ -256,4 +256,22 @@ return [
             'deleted_at_helper'        => ' ',
         ],
     ],
+    'customerDue' => [
+        'title'          => 'Customer Due',
+        'title_singular' => 'Customer Due',
+        'fields'         => [
+            'id'                   => 'ID',
+            'id_helper'            => ' ',
+            'customer'             => 'Customer',
+            'customer_helper'      => ' ',
+            'customer_dues'        => 'Customer Dues',
+            'customer_dues_helper' => ' ',
+            'created_at'           => 'Created at',
+            'created_at_helper'    => ' ',
+            'updated_at'           => 'Updated at',
+            'updated_at_helper'    => ' ',
+            'deleted_at'           => 'Deleted at',
+            'deleted_at_helper'    => ' ',
+        ],
+    ],
 ];

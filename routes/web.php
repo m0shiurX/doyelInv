@@ -67,6 +67,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Production
     Route::delete('productions/destroy', 'ProductionController@massDestroy')->name('productions.massDestroy');
     Route::resource('productions', 'ProductionController');
+    // Customer Due
+    Route::resource('customer-dues', 'CustomerDueController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

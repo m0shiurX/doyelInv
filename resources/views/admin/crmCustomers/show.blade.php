@@ -113,6 +113,9 @@
         <div class="tab-pane" role="tabpanel" id="customer_payments">
             @includeIf('admin.crmCustomers.relationships.customerPayments', ['payments' => $crmCustomer->customerPayments])
         </div>
+         <div class="tab-pane" role="tabpanel" id="customer_customer_dues">
+            @includeIf('admin.crmCustomers.relationships.customerCustomerDues', ['customerDues' => $crmCustomer->customerCustomerDues])
+        </div>
     </div>
 </div>
 

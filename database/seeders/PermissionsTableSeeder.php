@@ -184,66 +184,50 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 44,
-                'title' => 'due_create',
-            ],
-            [
-                'id'    => 45,
-                'title' => 'due_edit',
-            ],
-            [
-                'id'    => 46,
-                'title' => 'due_show',
-            ],
-            [
-                'id'    => 47,
-                'title' => 'due_delete',
-            ],
-            [
-                'id'    => 48,
-                'title' => 'due_access',
-            ],
-            [
-                'id'    => 49,
                 'title' => 'payment_create',
             ],
             [
-                'id'    => 50,
+                'id'    => 45,
                 'title' => 'payment_edit',
             ],
             [
-                'id'    => 51,
+                'id'    => 46,
                 'title' => 'payment_delete',
             ],
             [
-                'id'    => 52,
+                'id'    => 47,
                 'title' => 'payment_access',
             ],
             [
-                'id'    => 53,
+                'id'    => 48,
                 'title' => 'stock_access',
             ],
             [
-                'id'    => 54,
+                'id'    => 49,
                 'title' => 'production_create',
             ],
             [
-                'id'    => 55,
+                'id'    => 50,
                 'title' => 'production_edit',
             ],
             [
-                'id'    => 56,
+                'id'    => 51,
                 'title' => 'production_show',
             ],
             [
-                'id'    => 57,
+                'id'    => 52,
                 'title' => 'production_delete',
             ],
             [
-                'id'    => 58,
+                'id'    => 53,
                 'title' => 'production_access',
             ],
             [
-                'id'    => 59,
+                'id'    => 54,
+                'title' => 'customer_due_access',
+            ],
+            [
+                'id'    => 55,
                 'title' => 'profile_password_edit',
             ],
         ];
