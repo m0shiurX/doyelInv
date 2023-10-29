@@ -220,26 +220,30 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 53,
-                'title' => 'stock_create',
-            ],
-            [
-                'id'    => 54,
-                'title' => 'stock_edit',
-            ],
-            [
-                'id'    => 55,
-                'title' => 'stock_show',
-            ],
-            [
-                'id'    => 56,
-                'title' => 'stock_delete',
-            ],
-            [
-                'id'    => 57,
                 'title' => 'stock_access',
             ],
             [
+                'id'    => 54,
+                'title' => 'production_create',
+            ],
+            [
+                'id'    => 55,
+                'title' => 'production_edit',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'production_show',
+            ],
+            [
+                'id'    => 57,
+                'title' => 'production_delete',
+            ],
+            [
                 'id'    => 58,
+                'title' => 'production_access',
+            ],
+            [
+                'id'    => 59,
                 'title' => 'profile_password_edit',
             ],
         ];

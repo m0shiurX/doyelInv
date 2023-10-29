@@ -8,6 +8,7 @@ use App\Http\Requests\StoreSellRequest;
 use App\Http\Requests\UpdateSellRequest;
 use App\Models\CrmCustomer;
 use App\Models\Sell;
+use App\Models\Stock;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -36,6 +37,17 @@ class SellController extends Controller
 
     public function store(StoreSellRequest $request)
     {
+
+        $productStock = Stock::latest()->first();
+
+        // if ($productStock->quantity < $request->quantity || $productStock->weight < $request->weight) {
+        // }
+
+        $productStock->quantity -= $request->quantity;
+        $productStock->weight -= $request->weight;
+        $productStock->amount -= $request->total_amount;
+        $productStock->save();
+
         $sell = Sell::create($request->all());
 
         return redirect()->route('admin.sells.index');

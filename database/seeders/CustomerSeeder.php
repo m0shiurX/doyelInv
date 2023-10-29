@@ -16,12 +16,12 @@ class CustomerSeeder extends Seeder
     {
 
         DB::table('crm_customers')->insert([
-            'first_name' => 'Customer',
-            'last_name' => 'Name',
-            'address' => 'Address goes here',
-            'phone' => '88017x',
-            'account_no' => '88017x',
-            'email' => Str::random(10) . '@gmail.com',
+            'first_name' => 'Anonymous',
+            'last_name' => 'Customer',
+            'address' => 'Bogura',
+            'phone' => '88017XXXXXXXX',
+            'account_no' => '000',
+            'email' => 'anonymous@gmail.com',
             'status_id' => 1,
         ]);
     }

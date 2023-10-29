@@ -15,7 +15,8 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             RoleUserTableSeeder::class,
             CrmStatusTableSeeder::class,
-            CustomerSeeder::class
+            CustomerSeeder::class,
+            StockSeeder::class
         ]);
     }
 }

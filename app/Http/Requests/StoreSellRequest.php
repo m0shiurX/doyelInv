@@ -35,7 +35,7 @@ class StoreSellRequest extends FormRequest
             'quantity' => [
                 'required',
                 'integer',
-                'min:-2147483648',
+                'min:0',
                 'max:2147483647',
             ],
             'weight' => [
@@ -45,6 +45,7 @@ class StoreSellRequest extends FormRequest
             ],
             'total_amount' => [
                 'required',
+                'min:0',
             ],
             'paid_status' => [
                 'required',

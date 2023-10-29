@@ -67,6 +67,16 @@
                 </a>
             </li>
         @endcan
+        @can('production_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.productions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/productions") || request()->is("admin/productions/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.production.title') }}
+                </a>
+            </li>
+        @endcan
         @can('invoice_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/sells*") ? "c-show" : "" }} {{ request()->is("admin/dues*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/payments*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">

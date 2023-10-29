@@ -58,8 +58,15 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('payments', 'PaymentsController', ['except' => ['show']]);
 
     // Stock
-    Route::delete('stocks/destroy', 'StockController@massDestroy')->name('stocks.massDestroy');
-    Route::resource('stocks', 'StockController');
+    // Route::delete('stocks/destroy', 'StockController@massDestroy')->name('stocks.massDestroy');
+    // Route::resource('stocks', 'StockController');
+
+    // Stock
+    Route::resource('stocks', 'StockController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+
+    // Production
+    Route::delete('productions/destroy', 'ProductionController@massDestroy')->name('productions.massDestroy');
+    Route::resource('productions', 'ProductionController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password
