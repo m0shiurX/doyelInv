@@ -77,7 +77,7 @@
                 <label class="required">{{ trans('cruds.sell.fields.paid_status') }}</label>
                 @foreach(App\Models\Sell::PAID_STATUS_RADIO as $key => $label)
                     <div class="form-check {{ $errors->has('paid_status') ? 'is-invalid' : '' }}">
-                        <input class="form-check-input" disabled type="radio" id="paid_status_{{ $key }}" name="paid_status" value="{{ $key }}" {{ old('paid_status', 'unpaid') === (string) $key ? 'checked' : '' }} required>
+                        <input class="form-check-input" type="radio" id="paid_status_{{ $key }}" name="paid_status" value="{{ $key }}" {{ old('paid_status', 'unpaid') === (string) $key ? 'checked' : '' }} required>
                         <label class="form-check-label" for="paid_status_{{ $key }}">{{ $label }}</label>
                     </div>
                 @endforeach

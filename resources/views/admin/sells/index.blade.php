@@ -23,9 +23,6 @@
 
                         </th>
                         <th>
-                            {{ trans('cruds.sell.fields.id') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.sell.fields.invoice_no') }}
                         </th>
                         <th>
@@ -35,19 +32,13 @@
                             {{ trans('cruds.sell.fields.customer') }}
                         </th>
                         <th>
-                            {{ trans('cruds.crmCustomer.fields.last_name') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.sell.fields.quantity') }}
                         </th>
                         <th>
                             {{ trans('cruds.sell.fields.weight') }}
                         </th>
                         <th>
-                            {{ trans('cruds.sell.fields.total_amount') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.sell.fields.paid_status') }}
+                            {{ trans('cruds.sell.fields.total') }}
                         </th>
                         <th>
                             &nbsp;
@@ -63,36 +54,19 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                        </td>
-                        <td>
-                            <select class="search">
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                            {{-- <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach($crm_customers as $key => $item)
                                     <option value="{{ $item->first_name }}">{{ $item->first_name }}</option>
                                 @endforeach
-                            </select>
+                            </select> --}}
                         </td>
                         <td>
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <select class="search" strict="true">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach(App\Models\Sell::PAID_STATUS_RADIO as $key => $item)
-                                    <option value="{{ $item }}">{{ $item }}</option>
-                                @endforeach
-                            </select>
                         </td>
                         <td>
                         </td>
@@ -105,9 +79,6 @@
 
                             </td>
                             <td>
-                                {{ $sell->id ?? '' }}
-                            </td>
-                            <td>
                                 {{ $sell->invoice_no ?? '' }}
                             </td>
                             <td>
@@ -117,9 +88,6 @@
                                 {{ $sell->customer->first_name ?? '' }}
                             </td>
                             <td>
-                                {{ $sell->customer->last_name ?? '' }}
-                            </td>
-                            <td>
                                 {{ $sell->quantity ?? '' }}
                             </td>
                             <td>
@@ -127,9 +95,6 @@
                             </td>
                             <td>
                                 {{ $sell->total_amount ?? '' }}
-                            </td>
-                            <td>
-                                {{ App\Models\Sell::PAID_STATUS_RADIO[$sell->paid_status] ?? '' }}
                             </td>
                             <td>
                                 @can('sell_show')

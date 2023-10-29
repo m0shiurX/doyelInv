@@ -159,8 +159,8 @@ return [
         'title_singular' => 'Invoice',
     ],
     'sell' => [
-        'title'          => 'Sell',
-        'title_singular' => 'Sell',
+        'title'          => 'Sales',
+        'title_singular' => 'Sale',
         'fields'         => [
             'id'                  => 'ID',
             'id_helper'           => ' ',
@@ -183,6 +183,7 @@ return [
             'invoice_date'        => 'Invoice Date',
             'invoice_date_helper' => ' ',
             'total_amount'        => 'Total Amount',
+            'total'               => 'Total',
             'total_amount_helper' => ' ',
             'paid_status'         => 'Paid Status',
             'paid_status_helper'  => ' ',
