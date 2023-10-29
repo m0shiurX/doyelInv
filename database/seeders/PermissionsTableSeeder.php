@@ -228,6 +228,14 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 55,
+                'title' => 'stock_wastage_create',
+            ],
+            [
+                'id'    => 56,
+                'title' => 'stock_wastage_access',
+            ],
+            [
+                'id'    => 57,
                 'title' => 'profile_password_edit',
             ],
         ];

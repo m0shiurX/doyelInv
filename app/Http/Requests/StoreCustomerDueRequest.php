@@ -23,6 +23,7 @@ class StoreCustomerDueRequest extends FormRequest
             ],
             'customer_dues' => [
                 'required',
+                'min:1'
             ],
         ];
     }

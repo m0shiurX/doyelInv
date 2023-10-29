@@ -20,7 +20,7 @@ class StoreProductionRequest extends FormRequest
             'quantity_produced' => [
                 'required',
                 'integer',
-                'min:-2147483648',
+                'min:1',
                 'max:2147483647',
             ],
             'weight_produced' => [

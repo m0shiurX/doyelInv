@@ -139,6 +139,16 @@
                 </ul>
             </li>
         @endcan
+        @can('stock_wastage_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.stock-wastages.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/stock-wastages") || request()->is("admin/stock-wastages/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.stockWastage.title') }}
+                </a>
+            </li>
+        @endcan
         @can('basic_c_r_m_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/crm-statuses*") ? "c-show" : "" }} {{ request()->is("admin/crm-notes*") ? "c-show" : "" }} {{ request()->is("admin/crm-documents*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
