@@ -105,6 +105,11 @@
                 {{ trans('cruds.payment.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#customer_customer_dues" role="tab" data-toggle="tab">
+                {{ trans('cruds.customerDue.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="customer_sells">

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroySellRequest;
 use App\Http\Requests\StoreSellRequest;
 use App\Http\Requests\UpdateSellRequest;
 use App\Models\CrmCustomer;
+use App\Models\CustomerDue;
 use App\Models\Sell;
 use App\Models\Stock;
 use Gate;
@@ -38,17 +40,21 @@ class SellController extends Controller
     public function store(StoreSellRequest $request)
     {
 
-        $productStock = Stock::latest()->first();
 
-        // if ($productStock->quantity < $request->quantity || $productStock->weight < $request->weight) {
-        // }
+        DB::transaction(function () use ($request) {
 
-        $productStock->quantity -= $request->quantity;
-        $productStock->weight -= $request->weight;
-        $productStock->amount -= $request->total_amount;
-        $productStock->save();
+            $productStock = Stock::latest()->first();
+            $productStock->quantity -= $request->quantity;
+            $productStock->weight -= $request->weight;
+            $productStock->amount -= $request->total_amount;
+            $productStock->save();
 
-        $sell = Sell::create($request->all());
+            $customerDue = CustomerDue::where('customer_id', '=', $request->customer_id)->first();
+            $customerDue->customer_dues += $request->total_amount;
+            $customerDue->save();
+
+            $sell = Sell::create($request->validated());
+        });
 
         return redirect()->route('admin.sells.index');
     }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\MassDestroyProductionRequest;
 use App\Http\Requests\StoreProductionRequest;
 use App\Http\Requests\UpdateProductionRequest;
@@ -32,13 +33,17 @@ class ProductionController extends Controller
 
     public function store(StoreProductionRequest $request)
     {
-        $production = Production::create($request->all());
 
-        $productStock = Stock::latest()->first();
-        $productStock->quantity += $request->quantity_produced;
-        $productStock->weight += $request->weight_produced;
-        $productStock->amount += $request->total_amount;
-        $productStock->save();
+        DB::transaction(
+            function () use ($request) {
+                $productStock = Stock::latest()->first();
+                $productStock->quantity += $request->quantity_produced;
+                $productStock->weight += $request->weight_produced;
+                $productStock->amount += $request->total_amount;
+                $productStock->save();
+                $production = Production::create($request->validated());
+            }
+        );
 
         return redirect()->route('admin.productions.index');
     }

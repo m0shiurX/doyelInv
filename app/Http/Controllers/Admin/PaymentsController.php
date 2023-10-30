@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyPaymentRequest;
 use App\Http\Requests\StorePaymentRequest;
 use App\Http\Requests\UpdatePaymentRequest;
 use App\Models\CrmCustomer;
 use App\Models\Payment;
+use App\Models\CustomerDue;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -71,7 +73,13 @@ class PaymentsController extends Controller
 
     public function store(StorePaymentRequest $request)
     {
-        $payment = Payment::create($request->all());
+
+        DB::transaction(function () use ($request) {
+            $customerDue = CustomerDue::where('customer_id', '=', $request->customer_id)->first();
+            $customerDue->customer_dues -= $request->amount;
+            $customerDue->save();
+            $payment = Payment::create($request->validated());
+        });
 
         return redirect()->route('admin.payments.index');
     }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreStockWastageRequest;
 use App\Models\StockWastage;
@@ -30,14 +31,20 @@ class StockWastageController extends Controller
 
     public function store(StoreStockWastageRequest $request)
     {
-        $productStock = Stock::latest()->first();
 
-        $productStock->quantity -= $request->quantity_wasted;
-        $productStock->weight -= $request->weight_wasted;
-        $productStock->amount -= $request->amount_wasted;
-        $productStock->save();
+        DB::transaction(
+            function () use ($request) {
 
-        $stockWastage = StockWastage::create($request->all());
+                $productStock = Stock::latest()->first();
+
+                $productStock->quantity -= $request->quantity_wasted;
+                $productStock->weight -= $request->weight_wasted;
+                $productStock->amount -= $request->amount_wasted;
+                $productStock->save();
+
+                $stockWastage = StockWastage::create($request->validated());
+            }
+        );
 
         return redirect()->route('admin.stock-wastages.index');
     }

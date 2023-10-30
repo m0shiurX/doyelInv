@@ -1,6 +1,6 @@
 Changes to be made:
 [x] Stock management (Quantity, weight, amount)
-[] Waste removal from stock
+[x] Waste removal from stock
 [x] Previous due entry for customers
 [x] Remove unit price from sell
 [x] Customers account number entry

@@ -20,7 +20,7 @@ class StoreSellRequest extends FormRequest
             'invoice_no' => [
                 'required',
                 'integer',
-                'min:-2147483648',
+                'min:0',
                 'max:2147483647',
                 'unique:sells,invoice_no',
             ],
