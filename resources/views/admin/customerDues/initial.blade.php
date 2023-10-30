@@ -7,19 +7,8 @@
     </div>
 
     <div class="card-body">
-        <form method="POST" action="{{ route("admin.payments.store_initial_due") }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route("admin.customer-dues.store_initial_due") }}" enctype="multipart/form-data">
             @csrf
-            <div class="form-group">
-                <label for="payment_date">{{ trans('cruds.payment.fields.payment_date') }}</label>
-                <input class="form-control date {{ $errors->has('payment_date') ? 'is-invalid' : '' }}" type="text" name="payment_date" id="payment_date" value="{{ old('payment_date') }}">
-                @if($errors->has('payment_date'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('payment_date') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.payment.fields.payment_date_helper') }}</span>
-            </div>
-
             <div class="form-group">
                 <label class="required" for="customer_id">{{ trans('cruds.payment.fields.customer') }}</label>
                 <select class="form-control select2 {{ $errors->has('customer') ? 'is-invalid' : '' }}" name="customer_id" id="customer_id" required>

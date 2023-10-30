@@ -33,43 +33,6 @@ class PaymentsController extends Controller
 
         return view('admin.payments.create', compact('customers'));
     }
-    public function initial_due()
-    {
-        abort_if(Gate::denies('payment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-
-        $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.payments.initial', compact('customers'));
-    }
-
-    public function store_initial_due(Request $request)
-    {
-
-        $request->merge([
-            'amount' => -abs($request->input('amount')),
-        ]);
-
-
-        $request->validate([
-            'amount' => [
-                'required',
-                'numeric',
-                'max:-1'
-            ],
-            'customer_id' => [
-                'required',
-                'integer',
-            ],
-            'payment_date' => [
-                'date_format:' . config('panel.date_format'),
-                'nullable',
-            ],
-        ]);
-
-        $payment = Payment::create($request->all());
-
-        return redirect()->route('admin.payments.index');
-    }
 
     public function store(StorePaymentRequest $request)
     {

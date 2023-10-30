@@ -21,7 +21,7 @@ class CustomerSeeder extends Seeder
             'address' => 'Bogura',
             'phone' => '88017XXXXXXXX',
             'account_no' => '000',
-            'email' => 'anonymous@gmail.com',
+            'email' => 'anonymous@doyelmetal.com',
             'status_id' => 1,
         ]);
     }

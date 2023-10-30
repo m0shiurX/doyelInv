@@ -1,6 +1,14 @@
 @extends('layouts.admin')
 @section('content')
-
+@can('payment_create')
+    <div style="margin-bottom: 10px;" class="row">
+        <div class="col-lg-12">
+            <a class="btn btn-success" href="{{ route('admin.customer-dues.initial_due') }}">
+                {{ trans('cruds.payment.initial_due') }}
+            </a>
+        </div>
+    </div>
+@endcan
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.customerDue.title_singular') }} {{ trans('global.list') }}
@@ -12,19 +20,15 @@
                 <thead>
                     <tr>
                         <th width="10">
-
                         </th>
                         <th>
-                            {{ trans('cruds.customerDue.fields.id') }}
+                            {{ trans('cruds.crmCustomer.fields.account_no') }}
                         </th>
                         <th>
                             {{ trans('cruds.customerDue.fields.customer') }}
                         </th>
                         <th>
                             {{ trans('cruds.customerDue.fields.customer_dues') }}
-                        </th>
-                        <th>
-                            &nbsp;
                         </th>
                     </tr>
                     <tr>
@@ -42,9 +46,6 @@
                             </select>
                         </td>
                         <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -52,10 +53,9 @@
                     @foreach($customerDues as $key => $customerDue)
                         <tr data-entry-id="{{ $customerDue->id }}">
                             <td>
-
                             </td>
                             <td>
-                                {{ $customerDue->id ?? '' }}
+                                {{ $customerDue->customer->account_no ?? '' }}
                             </td>
                             <td>
                                 {{ $customerDue->customer->first_name ?? '' }}
@@ -63,12 +63,6 @@
                             <td>
                                 {{ $customerDue->customer_dues ?? '' }}
                             </td>
-                            <td>
-
-
-
-                            </td>
-
                         </tr>
                     @endforeach
                 </tbody>
@@ -85,7 +79,7 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-  
+
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
     order: [[ 1, 'desc' ]],
@@ -96,7 +90,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 let visibleColumnsIndexes = null;
 $('.datatable thead').on('input', '.search', function () {
       let strict = $(this).attr('strict') || false

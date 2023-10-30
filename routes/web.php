@@ -53,8 +53,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Payments
     Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
-    Route::get('payments/initial_due', 'PaymentsController@initial_due')->name('payments.initial_due');
-    Route::post('payments/store_initial_due', 'PaymentsController@store_initial_due')->name('payments.store_initial_due');
     Route::resource('payments', 'PaymentsController', ['except' => ['show']]);
 
     // Stock
@@ -69,6 +67,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('productions', 'ProductionController');
 
     // Customer Due
+    Route::get('customer-dues/initial_due', 'CustomerDueController@initial_due')->name('customer-dues.initial_due');
+    Route::post('customer-dues/store_initial_due', 'CustomerDueController@store_initial_due')->name('customer-dues.store_initial_due');
     Route::resource('customer-dues', 'CustomerDueController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
 
     // Stock Wastage

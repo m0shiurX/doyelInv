@@ -6,9 +6,6 @@
             <a class="btn btn-success" href="{{ route('admin.payments.create') }}">
                 {{ trans('global.add') }} {{ trans('cruds.payment.title_singular') }}
             </a>
-            <a class="btn btn-warning" href="{{ route('admin.payments.initial_due') }}">
-                {{ trans('cruds.payment.initial_due') }}
-            </a>
         </div>
     </div>
 @endcan
