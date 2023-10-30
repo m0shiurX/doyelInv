@@ -47,10 +47,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('sells/destroy', 'SellController@massDestroy')->name('sells.massDestroy');
     Route::resource('sells', 'SellController');
 
-    // Dues
-    Route::delete('dues/destroy', 'DuesController@massDestroy')->name('dues.massDestroy');
-    Route::resource('dues', 'DuesController');
-
     // Payments
     Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
     Route::resource('payments', 'PaymentsController', ['except' => ['show']]);
