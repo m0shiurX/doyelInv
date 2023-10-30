@@ -12,8 +12,22 @@ class UsersTableSeeder extends Seeder
         $users = [
             [
                 'id'             => 1,
-                'name'           => 'Admin',
-                'email'          => 'admin@admin.com',
+                'name'           => 'Super Admin',
+                'email'          => 'superadmin@doyelmetal.com',
+                'password'       => bcrypt('pa55w0rdX'),
+                'remember_token' => null,
+            ],
+            [
+                'id'             => 2,
+                'name'           => 'General Admin',
+                'email'          => 'admin@doyelmetal.com',
+                'password'       => bcrypt('password'),
+                'remember_token' => null,
+            ],
+            [
+                'id'             => 3,
+                'name'           => 'Manager',
+                'email'          => 'manager@doyelmetal.com',
                 'password'       => bcrypt('password'),
                 'remember_token' => null,
             ],
