@@ -73,6 +73,10 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Stock Wastage
     Route::resource('stock-wastages', 'StockWastageController', ['except' => ['edit', 'update', 'show', 'destroy']]);
+    // Stock History
+    Route::resource('stock-histories', 'StockHistoryController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);
+    // routes/web.php
+    Route::get('/update-stock-history', 'StockHistoryController@updateStockHistory');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
     // Change password

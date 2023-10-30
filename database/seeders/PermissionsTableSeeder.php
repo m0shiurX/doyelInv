@@ -236,6 +236,78 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 57,
+                'title' => 'stock_history_access',
+            ],
+            [
+                'id'    => 58,
+                'title' => 'factory_access',
+            ],
+            [
+                'id'    => 59,
+                'title' => 'customer_access',
+            ],
+            [
+                'id'    => 60,
+                'title' => 'add_to_stock_create',
+            ],
+            [
+                'id'    => 61,
+                'title' => 'add_to_stock_edit',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'add_to_stock_show',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'add_to_stock_delete',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'add_to_stock_access',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'add_customer_create',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'add_customer_edit',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'add_customer_show',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'add_customer_delete',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'add_customer_access',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'new_sale_create',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'new_sale_edit',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'new_sale_show',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'new_sale_delete',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'new_sale_access',
+            ],
+            [
+                'id'    => 75,
                 'title' => 'profile_password_edit',
             ],
         ];

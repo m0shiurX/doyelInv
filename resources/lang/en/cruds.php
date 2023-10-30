@@ -2,8 +2,8 @@
 
 return [
     'userManagement' => [
-        'title'          => 'User management',
-        'title_singular' => 'User management',
+        'title'          => 'Managers',
+        'title_singular' => 'Manager',
     ],
     'permission' => [
         'title'          => 'Permissions',
@@ -40,8 +40,8 @@ return [
         ],
     ],
     'user' => [
-        'title'          => 'Users',
-        'title_singular' => 'User',
+        'title'          => 'List of Managers',
+        'title_singular' => 'Manager',
         'fields'         => [
             'id'                       => 'ID',
             'id_helper'                => ' ',
@@ -257,7 +257,7 @@ return [
         ],
     ],
     'customerDue' => [
-        'title'          => 'Customer Due',
+        'title'          => 'Customer Dues',
         'title_singular' => 'Customer Due',
         'fields'         => [
             'id'                   => 'ID',
@@ -275,8 +275,8 @@ return [
         ],
     ],
     'stockWastage' => [
-        'title'          => 'Stock Wastage',
-        'title_singular' => 'Stock Wastage',
+        'title'          => 'Manage Wastages',
+        'title_singular' => 'Manage Wastage',
         'fields'         => [
             'id'                     => 'ID',
             'id_helper'              => ' ',
@@ -297,5 +297,47 @@ return [
             'deleted_at'             => 'Deleted at',
             'deleted_at_helper'      => ' ',
         ],
+    ],
+    'stockHistory' => [
+        'title'          => 'Stock History',
+        'title_singular' => 'Stock History',
+        'fields'         => [
+            'id'                => 'ID',
+            'id_helper'         => ' ',
+            'date'              => 'Date',
+            'date_helper'       => ' ',
+            'quantity'          => 'Quantity',
+            'quantity_helper'   => ' ',
+            'weight'            => 'Weight',
+            'weight_helper'     => ' ',
+            'amount'            => 'Amount',
+            'amount_helper'     => ' ',
+            'created_at'        => 'Created at',
+            'created_at_helper' => ' ',
+            'updated_at'        => 'Updated at',
+            'updated_at_helper' => ' ',
+            'deleted_at'        => 'Deleted at',
+            'deleted_at_helper' => ' ',
+        ],
+    ],
+    'factory' => [
+        'title'          => 'Factory',
+        'title_singular' => 'Factory',
+    ],
+    'customer' => [
+        'title'          => 'Customers',
+        'title_singular' => 'Customer',
+    ],
+    'addToStock' => [
+        'title'          => 'Add To Production',
+        'title_singular' => 'Add To Production',
+    ],
+    'addCustomer' => [
+        'title'          => 'Add Customer',
+        'title_singular' => 'Add Customer',
+    ],
+    'newSale' => [
+        'title'          => 'New Sale',
+        'title_singular' => 'New Sale',
     ],
 ];

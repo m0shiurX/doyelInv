@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'site_title' => 'Doyel Inv',
+    'site_title' => 'Doyel Metal',
 
 ];
