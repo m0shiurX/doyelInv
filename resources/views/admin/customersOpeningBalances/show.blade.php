@@ -3,13 +3,13 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('global.show') }} {{ trans('cruds.stock.title') }}
+        {{ trans('global.show') }} {{ trans('cruds.customersOpeningBalance.title') }}
     </div>
 
     <div class="card-body">
         <div class="form-group">
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.stocks.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.customers-opening-balances.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>
@@ -17,40 +17,40 @@
                 <tbody>
                     <tr>
                         <th>
-                            {{ trans('cruds.stock.fields.id') }}
+                            {{ trans('cruds.customersOpeningBalance.fields.id') }}
                         </th>
                         <td>
-                            {{ $stock->id }}
+                            {{ $customersOpeningBalance->id }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.stock.fields.quantity') }}
+                            {{ trans('cruds.customersOpeningBalance.fields.customer') }}
                         </th>
                         <td>
-                            {{ $stock->quantity }}
+                            {{ $customersOpeningBalance->customer->first_name ?? '' }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.stock.fields.weight') }}
+                            {{ trans('cruds.customersOpeningBalance.fields.amount') }}
                         </th>
                         <td>
-                            {{ $stock->weight }}
+                            {{ $customersOpeningBalance->amount }}
                         </td>
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.stock.fields.amount') }}
+                            {{ trans('cruds.customersOpeningBalance.fields.calculation_date') }}
                         </th>
                         <td>
-                            {{ $stock->amount }}
+                            {{ $customersOpeningBalance->calculation_date }}
                         </td>
                     </tr>
                 </tbody>
             </table>
             <div class="form-group">
-                <a class="btn btn-default" href="{{ route('admin.stocks.index') }}">
+                <a class="btn btn-default" href="{{ route('admin.customers-opening-balances.index') }}">
                     {{ trans('global.back_to_list') }}
                 </a>
             </div>

@@ -78,7 +78,7 @@
             </li>
         @endcan
         @can('customer_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/add-customers*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/payments*") ? "c-show" : "" }} {{ request()->is("admin/customer-dues*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/add-customers*") ? "c-show" : "" }} {{ request()->is("admin/crm-customers*") ? "c-show" : "" }} {{ request()->is("admin/payments*") ? "c-show" : "" }} {{ request()->is("admin/customer-dues*") ? "c-show" : "" }} {{ request()->is("admin/customers-opening-balances*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-users c-sidebar-nav-icon">
 
@@ -123,6 +123,16 @@
 
                                 </i>
                                 {{ trans('cruds.customerDue.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('customer_due_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.customers-opening-balances.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/customers-opening-balances") || request()->is("admin/customers-opening-balances/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.customersOpeningBalance.title') }}
                             </a>
                         </li>
                     @endcan
