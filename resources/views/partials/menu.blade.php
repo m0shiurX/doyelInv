@@ -126,7 +126,7 @@
                             </a>
                         </li>
                     @endcan
-                    @can('customer_due_access')
+                    @can('customers_opening_balance_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.customers-opening-balances.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/customers-opening-balances") || request()->is("admin/customers-opening-balances/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
