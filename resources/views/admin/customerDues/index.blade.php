@@ -1,14 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-@can('payment_create')
-    <div style="margin-bottom: 10px;" class="row">
-        <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.customer-dues.initial_due') }}">
-                {{ trans('cruds.payment.initial_due') }}
-            </a>
-        </div>
-    </div>
-@endcan
 <div class="card">
     <div class="card-header">
         {{ trans('cruds.customerDue.title_singular') }} {{ trans('global.list') }}
