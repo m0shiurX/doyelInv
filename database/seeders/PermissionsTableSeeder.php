@@ -310,6 +310,14 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 75,
                 'title' => 'profile_password_edit',
             ],
+            [
+                'id'    => 76,
+                'title' => 'customers_opening_balance_access',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'customers_opening_balance_create',
+            ],
         ];
 
         Permission::insert($permissions);
