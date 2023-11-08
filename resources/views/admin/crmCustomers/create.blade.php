@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('content')
 
-<div class="card">
+<div class="card col-12 col-md-12 col-lg-10 offset-lg-1">
     <div class="card-header">
         {{ trans('global.create') }} {{ trans('cruds.crmCustomer.title_singular') }}
     </div>
@@ -9,9 +9,10 @@
     <div class="card-body">
         <form method="POST" action="{{ route("admin.crm-customers.store") }}" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="status_id" value="1">
             <div class="form-group">
-                <label for="account_no">{{ trans('cruds.crmCustomer.fields.account_no') }}</label>
-                <input class="form-control {{ $errors->has('account_no') ? 'is-invalid' : '' }}" type="text" name="account_no" id="account_no" value="{{ old('account_no', '') }}">
+                <label class="required" for="account_no">{{ trans('cruds.crmCustomer.fields.account_no') }}</label>
+                <input class="form-control {{ $errors->has('account_no') ? 'is-invalid' : '' }}" type="number" name="account_no" id="account_no" value="{{ old('account_no', '') }}" required>
                 @if($errors->has('account_no'))
                     <div class="invalid-feedback">
                         {{ $errors->first('account_no') }}
@@ -39,20 +40,6 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.crmCustomer.fields.last_name_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label class="required" for="status_id">{{ trans('cruds.crmCustomer.fields.status') }}</label>
-                <select class="form-control select2 {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status_id" id="status_id" required>
-                    @foreach($statuses as $id => $entry)
-                        <option value="{{ $id }}" {{ old('status_id') == $id ? 'selected' : '' }}>{{ $entry }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('status'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('status') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.crmCustomer.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="email">{{ trans('cruds.crmCustomer.fields.email') }}</label>

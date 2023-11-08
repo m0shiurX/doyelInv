@@ -43,7 +43,7 @@ class UpdateCrmCustomerRequest extends FormRequest
             ],
             'account_no' => [
                 'string',
-                'nullable',
+                'required',
             ],
         ];
     }

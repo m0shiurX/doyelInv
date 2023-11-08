@@ -29,7 +29,7 @@ class PaymentsController extends Controller
     {
         abort_if(Gate::denies('payment_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $customers = CrmCustomer::select('account_no', 'first_name', 'id')->get();
 
         return view('admin.payments.create', compact('customers'));
     }
@@ -51,11 +51,11 @@ class PaymentsController extends Controller
     {
         abort_if(Gate::denies('payment_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        // $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
 
         $payment->load('customer');
 
-        return view('admin.payments.edit', compact('customers', 'payment'));
+        return view('admin.payments.edit', compact('payment'));
     }
 
     public function update(UpdatePaymentRequest $request, Payment $payment)

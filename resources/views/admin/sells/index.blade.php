@@ -20,7 +20,6 @@
                 <thead>
                     <tr>
                         <th width="10">
-
                         </th>
                         <th>
                             {{ trans('cruds.sell.fields.invoice_no') }}
@@ -38,7 +37,7 @@
                             {{ trans('cruds.sell.fields.weight') }}
                         </th>
                         <th>
-                            {{ trans('cruds.sell.fields.total') }}
+                            {{ trans('cruds.sell.fields.total_amount') }}
                         </th>
                         <th>
                             &nbsp;
@@ -55,12 +54,6 @@
                         </td>
                         <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                            {{-- <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($crm_customers as $key => $item)
-                                    <option value="{{ $item->first_name }}">{{ $item->first_name }}</option>
-                                @endforeach
-                            </select> --}}
                         </td>
                         <td>
                         </td>
@@ -76,7 +69,6 @@
                     @foreach($sells as $key => $sell)
                         <tr data-entry-id="{{ $sell->id }}">
                             <td>
-
                             </td>
                             <td>
                                 {{ $sell->invoice_no ?? '' }}
@@ -85,6 +77,7 @@
                                 {{ $sell->invoice_date ?? '' }}
                             </td>
                             <td>
+                                {{ $sell->customer->account_no ?? '' }} - 
                                 {{ $sell->customer->first_name ?? '' }}
                             </td>
                             <td>
@@ -116,9 +109,7 @@
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
-
                             </td>
-
                         </tr>
                     @endforeach
                 </tbody>

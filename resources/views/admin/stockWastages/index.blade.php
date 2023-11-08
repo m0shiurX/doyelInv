@@ -35,9 +35,6 @@
                             {{ trans('cruds.stockWastage.fields.amount_wasted') }}
                         </th>
                         <th>
-                            {{ trans('cruds.stockWastage.fields.reason') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.stockWastage.fields.wastage_date') }}
                         </th>
                         <th>
@@ -62,9 +59,6 @@
                             </td>
                             <td>
                                 {{ $stockWastage->amount_wasted ?? '' }}
-                            </td>
-                            <td>
-                                {{ $stockWastage->reason ?? '' }}
                             </td>
                             <td>
                                 {{ $stockWastage->wastage_date ?? '' }}

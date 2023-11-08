@@ -19,25 +19,14 @@
                             {{ trans('cruds.customerDue.fields.customer') }}
                         </th>
                         <th>
+                            {{ trans('cruds.crmCustomer.fields.phone') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.crmCustomer.fields.address') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.customerDue.fields.customer_dues') }}
                         </th>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
-                        </td>
-                        <td>
-                            <select class="search">
-                                <option value>{{ trans('global.all') }}</option>
-                                @foreach($crm_customers as $key => $item)
-                                    <option value="{{ $item->first_name }}">{{ $item->first_name }}</option>
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -50,6 +39,12 @@
                             </td>
                             <td>
                                 {{ $customerDue->customer->first_name ?? '' }}
+                            </td>
+                            <td>
+                                {{ $customerDue->customer->phone ?? '' }}
+                            </td>
+                            <td>
+                                {{ $customerDue->customer->address ?? '' }}
                             </td>
                             <td>
                                 {{ $customerDue->customer_dues ?? '' }}

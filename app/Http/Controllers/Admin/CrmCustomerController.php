@@ -28,9 +28,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $statuses = CrmStatus::pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.crmCustomers.create', compact('statuses'));
+        return view('admin.crmCustomers.create');
     }
 
     public function store(StoreCrmCustomerRequest $request)

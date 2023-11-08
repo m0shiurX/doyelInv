@@ -32,7 +32,7 @@ class SellController extends Controller
     {
         abort_if(Gate::denies('sell_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $customers = CrmCustomer::pluck('first_name', 'id')->prepend(trans('global.pleaseSelect'), '');
+        $customers = CrmCustomer::select('first_name', 'account_no', 'id')->get();
 
         return view('admin.sells.create', compact('customers'));
     }

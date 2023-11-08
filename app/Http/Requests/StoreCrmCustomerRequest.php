@@ -39,7 +39,7 @@ class StoreCrmCustomerRequest extends FormRequest
             ],
             'account_no' => [
                 'string',
-                'nullable',
+                'required',
             ],
             'address' => [
                 'string',
