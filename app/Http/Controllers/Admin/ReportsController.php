@@ -64,10 +64,10 @@ class ReportsController extends Controller
                 ];
 
                 // Production Summary
-                $productionCount = Production::count();
-                $totalProductionQuantity = Production::sum('quantity_produced');
-                $totalProductionAmount = Production::sum('total_amount');
-                $totalProductionWeight = Production::sum('weight_produced');
+                $productionCount = Production::whereBetween('production_date', [$startDate, $endDate])->count();
+                $totalProductionQuantity = Production::whereBetween('production_date', [$startDate, $endDate])->sum('quantity_produced');
+                $totalProductionAmount = Production::whereBetween('production_date', [$startDate, $endDate])->sum('total_amount');
+                $totalProductionWeight = Production::whereBetween('production_date', [$startDate, $endDate])->sum('weight_produced');
 
                 $productionSummary = [
                     "type" => "Production",
@@ -86,62 +86,5 @@ class ReportsController extends Controller
         } else {
             return view('admin.reports.index');
         }
-    }
-
-    public function fetchReport(Request $request)
-    {
-        $startDate = $request->input('start_date');
-        $endDate = $request->input('end_date');
-
-        // Query the sales table to fetch sales within the date range
-        $sales = Sell::whereBetween('invoice_date', [$startDate, $endDate])->get();
-        $payments = Payment::whereBetween('payment_date', [$startDate, $endDate])->get();
-        $production = Production::whereBetween('production_date', [$startDate, $endDate])->get();
-
-        // Invoice Summary
-        $invoiceCount = Sell::whereBetween('invoice_date', [$startDate, $endDate])->count();
-        $totalInvoiceQuantity = Sell::whereBetween('invoice_date', [$startDate, $endDate])->sum('quantity');
-        $totalInvoiceWeight = Sell::whereBetween('invoice_date', [$startDate, $endDate])->sum('weight');
-        $totalInvoiceAmount = Sell::whereBetween('invoice_date', [$startDate, $endDate])->sum('total_amount');
-        $invoiceSummary = [
-            "type" => "Sales",
-            "invoices" => ($invoiceCount ?? '0'),
-            "quantity" => ($totalInvoiceQuantity ?? '0'),
-            'weight'   => ($totalInvoiceWeight ?? '0'),
-            'amount'   => ($totalInvoiceAmount ?? '0'),
-        ];
-
-
-        // Payment summary
-        $paymentCount = Payment::whereBetween('payment_date', [$startDate, $endDate])->count();
-        $totalPaymentAmount = Payment::whereBetween('payment_date', [$startDate, $endDate])->sum('amount');
-
-        $paymentSummary = [
-            "type" => "Payment",
-            "invoices" => ($paymentCount ?? '0'),
-            "quantity" => '',
-            'weight'   => '',
-            'amount'   => ($totalPaymentAmount ?? '0'),
-        ];
-
-        // Production Summary
-        $productionCount = Production::count();
-        $totalProductionQuantity = Production::sum('quantity_produced');
-        $totalProductionAmount = Production::sum('total_amount');
-        $totalProductionWeight = Production::sum('weight_produced');
-
-        $productionSummary = [
-            "type" => "Production",
-            "invoices" => ($productionCount ?? '0'),
-            "quantity" => ($totalProductionQuantity ?? '0'),
-            'weight'   => ($totalProductionWeight ?? '0'),
-            'amount'   => ($totalProductionAmount ?? '0'),
-        ];
-        $summaries = [
-            $invoiceSummary, $paymentSummary, $productionSummary
-        ];
-
-        // Return or display the sales report
-        return view('admin.reports.show', ['sales' => $sales, 'payments' => $payments, 'production' => $production, 'summaries' => $summaries]);
     }
 }
