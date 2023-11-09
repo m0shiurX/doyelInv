@@ -12,6 +12,7 @@
                     @include('partials.search')
 
                     {{-- Sales table --}}
+                    @if (count($sales) > 0)
                     <div class="table-responsive">
                         <h4>Sales Table</h4>
                         <table class=" table table-bordered table-striped table-hover">
@@ -64,7 +65,9 @@
                             </tbody>
                         </table>
                     </div>
+                    @endif
 
+                    @if (count($payments) > 0)
                     {{-- Payments table --}}
                     <div class="table-responsive">
                         <h4>Payments Table</h4>
@@ -105,7 +108,9 @@
                             </tbody>
                         </table>
                     </div>
+                    @endif
 
+                    @if (count($production) > 0)
                     {{-- Production table --}}
                     <div class="table-responsive">
                         <h4>Production Table</h4>
@@ -152,6 +157,7 @@
                             </tbody>
                         </table>
                     </div>
+                    @endif
 
                     {{-- Summary table --}}
                     <div class="table-responsive">
