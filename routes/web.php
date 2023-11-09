@@ -5,7 +5,6 @@ Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
     }
-
     return redirect()->route('admin.home');
 });
 
@@ -13,6 +12,10 @@ Auth::routes(['register' => false]);
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
+
+    Route::get('/reports', 'ReportsController@index')->name('reports');
+    Route::post('/reports', 'ReportsController@index')->name('reports');
+    // Route::post('/reports/fetch', 'ReportsController@fetchReport')->name('reports.fetch');
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');
     Route::resource('permissions', 'PermissionsController');
@@ -51,9 +54,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::delete('payments/destroy', 'PaymentsController@massDestroy')->name('payments.massDestroy');
     Route::resource('payments', 'PaymentsController', ['except' => ['show']]);
 
-    // Stock
-    // Route::delete('stocks/destroy', 'StockController@massDestroy')->name('stocks.massDestroy');
-    // Route::resource('stocks', 'StockController');
 
     // Stock
     Route::resource('stocks', 'StockController', ['except' => ['create', 'store', 'edit', 'update', 'show', 'destroy']]);

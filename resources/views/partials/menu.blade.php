@@ -15,6 +15,14 @@
                 {{ trans('global.dashboard') }}
             </a>
         </li>
+        <li class="c-sidebar-nav-item">
+            <a href="{{ route("admin.reports") }}" class="c-sidebar-nav-link">
+                <i class="c-sidebar-nav-icon fas fa-fw fa-sticky-note">
+
+                </i>
+                {{ trans('global.reports') }}
+            </a>
+        </li>
         @can('factory_access')
             <li class="c-sidebar-nav-dropdown {{ request()->is("admin/add-to-stocks*") ? "c-show" : "" }} {{ request()->is("admin/productions*") ? "c-show" : "" }} {{ request()->is("admin/stocks*") ? "c-show" : "" }} {{ request()->is("admin/stock-histories*") ? "c-show" : "" }} {{ request()->is("admin/stock-wastages*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
