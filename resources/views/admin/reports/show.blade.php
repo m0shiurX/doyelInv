@@ -211,6 +211,9 @@
                         </table>
                     </div>
                 </div>
+                <div class="card-footer">
+					This statement is generated on {{now()->format('D, d M, Y')}}.
+				</div>
             </div>
         </div>
     </div>
