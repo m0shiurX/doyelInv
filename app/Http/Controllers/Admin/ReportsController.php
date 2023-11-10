@@ -33,6 +33,8 @@ class ReportsController extends Controller
                 $startDate = $request->input('start_date');
                 $endDate = $request->input('end_date');
 
+                $date_range = $startDate . ' - ' . $endDate;
+
                 // Query the sales table to fetch sales within the date range
                 $sales = Sell::whereBetween('invoice_date', [$startDate, $endDate])->get();
                 $payments = Payment::whereBetween('payment_date', [$startDate, $endDate])->get();
@@ -82,7 +84,16 @@ class ReportsController extends Controller
                 ];
 
                 // Return or display the sales report
-                return view('admin.reports.show', ['sales' => $sales, 'payments' => $payments, 'production' => $production, 'summaries' => $summaries]);
+                return view('admin.reports.show', [
+                    'date_range' => $date_range,
+                    'sales' => $sales,
+                    'payments' => $payments,
+                    'production' => $production,
+                    'summaries' => $summaries,
+                    'payment_summary' => $paymentSummary,
+                    'invoice_summary' => $invoiceSummary,
+                    'production_summary' => $productionSummary,
+                ]);
             }
         } else {
             return view('admin.reports.index');

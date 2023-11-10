@@ -3,20 +3,27 @@
 <div class="content">
     <div class="row">
         <div class="col-lg-12">
-            <div class="card col-12 col-md-12 col-lg-12">
+            <div class="card  d-print-none col-12 col-md-12 col-lg-12">
                 <div class="card-header">
-                    Reports 
+                    Reports page
                 </div>
                 <div class="card-body">
-                    <button class="d-print-none" onclick="printStatement()">Print Statement</button>
-                    <div class="d-print-none">
-                        @include('partials.search')
+                    @include('partials.search')
+                </div>
+            </div>
+            <div class="card col-12 col-md-12 col-lg-12">
+                <div class="card-header">
+                    <div class="d-flex align-items-center justify-content-between">
+                    <h4 class="">Reports generated for <span class="text-muted"> {{ $date_range }}</span>. </h4>
+                    <button class="d-btn btn-info d-print-none" onclick="printStatement()"> Print </button>
                     </div>
+                </div>
+                <div class="card-body">
                     {{-- Sales table --}}
                     @if (count($sales) > 0)
                     <div class="table-responsive">
-                        <h4>Sales Table</h4>
                         <table class="table table-bordered table-striped table-hover">
+                            <caption>Sales Invoices</caption>
                             <thead>
                                 <tr>
                                     <th>
@@ -64,15 +71,21 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <th colspan="3">Total - {{ $invoice_summary['invoices'] }} Invoices </th>
+                                <th>{{ $invoice_summary['quantity']}}</th>
+                                <th>{{ $invoice_summary['weight']}}</th>
+                                <th>{{ $invoice_summary['amount']}}</th>
+                            </tfoot>
                         </table>
                     </div>
                     @endif
 
                     @if (count($payments) > 0)
                     {{-- Payments table --}}
-                    <div class="table-responsive">
-                        <h4>Payments Table</h4>
+                    <div class="table-responsive mt-5">
                         <table class=" table table-bordered table-striped table-hover">
+                            <caption>Payments Invoices</caption>
                             <thead>
                                 <tr>
                                     <th>
@@ -107,15 +120,19 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                            <tfoot>
+                                <th colspan="2">Total - {{ $payment_summary['invoices'] }} Payments </th>
+                                <th colspan="2">BDT {{ $payment_summary['amount']}}</th>
+                            </tfoot>
                         </table>
                     </div>
                     @endif
 
                     @if (count($production) > 0)
                     {{-- Production table --}}
-                    <div class="table-responsive">
-                        <h4>Production Table</h4>
+                    <div class="table-responsive mt-5">
                         <table class=" table table-bordered table-striped table-hover">
+                         <caption>Production Invoices</caption>
                             <thead>
                                 <tr>
                                     <th>
@@ -156,14 +173,21 @@
                                     </tr>
                                 @endforeach
                             </tbody>
+                             <tfoot>
+                                <th colspan="2">Total - {{ $production_summary['invoices'] }} Invoices </th>
+                                <th>{{ $production_summary['quantity']}}</th>
+                                <th>{{ $production_summary['weight']}}</th>
+                                <th>{{ $production_summary['amount']}}</th>
+                            </tfoot>
                         </table>
                     </div>
                     @endif
 
                     {{-- Summary table --}}
-                    <div class="table-responsive">
-                        <h4>Summary Table</h4>
+                    <div class="table-responsive mt-5">
+                        
                         <table class="table table-bordered table-striped table-hover">
+                            <caption>Summaries of sales, payments and production.</caption>
                             <thead>
                                 <tr>
                                     <th>Category</th>
@@ -176,7 +200,7 @@
                             <tbody>
                                 @foreach ($summaries as $summary)
                                 <tr>
-                                    <td>{{ $summary['type'] }}</td>
+                                    <th>{{ $summary['type'] }}</th>
                                     <td>{{ $summary['invoices'] }}</td>
                                     <td>{{ $summary['quantity'] }}</td>
                                     <td>{{ $summary['weight'] }}</td>
@@ -197,22 +221,6 @@
 <script>
     function printStatement() {
         window.print();
-        // Open a new window for printing
-        // var printWindow = window.open('', '_blank');
-        
-        // // Add the HTML content you want to print
-        // var contentToPrint = document.getElementById('printable').outerHTML;
-
-        // // Set the content of the new window to the table content
-        // printWindow.document.write('<html><head><title>Print Statement</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gutenberg-css@0.7.0/dist/gutenberg.min.css" media="print"></head><body>');
-        // printWindow.document.write(contentToPrint);
-        // printWindow.document.write('</body></html>');
-
-        // // Close the document stream to finish writing
-        // printWindow.document.close();
-
-        // // Call the print function
-        // printWindow.print();
     }
 </script>
 @endsection
