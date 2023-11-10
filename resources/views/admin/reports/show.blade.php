@@ -15,7 +15,7 @@
                     @if (count($sales) > 0)
                     <div class="table-responsive">
                         <h4>Sales Table</h4>
-                        <table class=" table table-bordered table-striped table-hover">
+                        <table class="table table-bordered table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th>

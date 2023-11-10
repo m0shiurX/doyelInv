@@ -27,6 +27,9 @@
                         <th>
                             {{ trans('cruds.customerDue.fields.customer_dues') }}
                         </th>
+                        <th>
+                            &nbsp;
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -48,6 +51,11 @@
                             </td>
                             <td>
                                 {{ $customerDue->customer_dues ?? '' }}
+                            </td>
+                            <td>
+                                <a class="btn btn-xs btn-success" href="{{ route('admin.reports.statement', $customerDue->customer_id) }}">
+                                    Statement
+                                </a>
                             </td>
                         </tr>
                     @endforeach

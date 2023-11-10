@@ -15,6 +15,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     Route::get('/reports', 'ReportsController@index')->name('reports');
     Route::post('/reports', 'ReportsController@index')->name('reports');
+    Route::get('/reports/statement/{customerId}', 'ReportsController@getCustomerStatement')->name('reports.statement');
+
 
     // Permissions
     Route::delete('permissions/destroy', 'PermissionsController@massDestroy')->name('permissions.massDestroy');

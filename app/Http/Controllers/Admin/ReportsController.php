@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Payment;
 use App\Models\Production;
+use App\Models\CrmCustomer;
 use App\Models\Sell;
 use Illuminate\Support\Facades\Validator;
 
@@ -86,5 +87,32 @@ class ReportsController extends Controller
         } else {
             return view('admin.reports.index');
         }
+    }
+
+    public function getCustomerStatement($customerId)
+    {
+        // Query the database to get sales and payments for the specified customer
+        $customer = CrmCustomer::find($customerId);
+
+        // If the customer is not found, you can handle this accordingly (e.g., show an error view)
+        if (!$customer) {
+            abort(404, 'Customer not found');
+        }
+
+        // Get sales and payments for the customer, ordered by creation time
+        $sales = Sell::where('customer_id', $customerId)->orderBy('invoice_date')->get();
+        $payments = Payment::where('customer_id', $customerId)->orderBy('payment_date')->get();
+
+        $mergedData = $sales->merge($payments)->sortBy(function ($item) {
+            return $item instanceof \App\Models\Sell ? $item->invoice_date : $item->payment_date;
+        });
+
+        // dd($mergedData);
+
+        return view('admin.reports.statement', [
+            'customer' => $customer,
+            'mergedData' => $mergedData,
+            // 'payments' => $payments,
+        ]);
     }
 }

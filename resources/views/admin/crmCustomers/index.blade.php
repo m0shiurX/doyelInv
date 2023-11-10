@@ -95,7 +95,9 @@
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
                                     </form>
                                 @endcan
-
+                                    <a class="btn btn-xs btn-success" href="{{ route('admin.reports.statement', $crmCustomer->id) }}">
+                                        Statement
+                                    </a>
                             </td>
 
                         </tr>
