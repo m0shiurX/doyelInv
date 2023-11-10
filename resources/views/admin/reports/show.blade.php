@@ -8,9 +8,10 @@
                     Reports 
                 </div>
                 <div class="card-body">
-
-                    @include('partials.search')
-
+                    <button class="d-print-none" onclick="printStatement()">Print Statement</button>
+                    <div class="d-print-none">
+                        @include('partials.search')
+                    </div>
                     {{-- Sales table --}}
                     @if (count($sales) > 0)
                     <div class="table-responsive">
@@ -193,4 +194,25 @@
 @endsection
 @section('scripts')
 @parent
+<script>
+    function printStatement() {
+        window.print();
+        // Open a new window for printing
+        // var printWindow = window.open('', '_blank');
+        
+        // // Add the HTML content you want to print
+        // var contentToPrint = document.getElementById('printable').outerHTML;
+
+        // // Set the content of the new window to the table content
+        // printWindow.document.write('<html><head><title>Print Statement</title><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gutenberg-css@0.7.0/dist/gutenberg.min.css" media="print"></head><body>');
+        // printWindow.document.write(contentToPrint);
+        // printWindow.document.write('</body></html>');
+
+        // // Close the document stream to finish writing
+        // printWindow.document.close();
+
+        // // Call the print function
+        // printWindow.print();
+    }
+</script>
 @endsection

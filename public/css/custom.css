@@ -143,3 +143,43 @@ table.dataTable thead .sorting_desc {
 .select2-container--default .select2-selection--single .select2-selection__rendered {
 	line-height: 35px;
 }
+
+/* print */
+@media print {
+	.c-wrapper {
+		margin: 0 !important;
+		background-color: #fff;
+		color: #000;
+	}
+	.c-main,
+	.container-fluid {
+		padding: 0 !important;
+	}
+	.card {
+		border: none;
+		margin: 0;
+		padding: 0;
+	}
+	.card-header {
+		display: none;
+	}
+
+	.table-bordered td,
+	.table-bordered th {
+		color: #000;
+		border-color: #1c1c1c;
+	}
+	.table-responsive h4 {
+		font-size: 18px;
+	}
+}
+
+
+	@page {
+		margin: 2cm 1cm;
+		size: A4 portrait;
+	}
+
+	@page:first {
+		margin: 3cm 1cm;
+	}

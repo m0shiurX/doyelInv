@@ -28,7 +28,7 @@
 <body class="c-app">
     @include('partials.menu')
     <div class="c-wrapper">
-        <header class="c-header c-header-fixed px-3">
+        <header class="c-header c-header-fixed px-3 d-print-none">
             <button class="c-header-toggler c-class-toggler d-lg-none mfe-auto" type="button" data-target="#sidebar" data-class="c-sidebar-show">
                 <i class="fas fa-fw fa-bars"></i>
             </button>
