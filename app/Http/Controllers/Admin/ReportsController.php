@@ -118,12 +118,10 @@ class ReportsController extends Controller
             return $item instanceof \App\Models\Sell ? $item->invoice_date : $item->payment_date;
         });
 
-        // dd($mergedData);
 
         return view('admin.reports.statement', [
             'customer' => $customer,
             'mergedData' => $mergedData,
-            // 'payments' => $payments,
         ]);
     }
 }
