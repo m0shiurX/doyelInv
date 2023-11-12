@@ -122,7 +122,7 @@
                             </tbody>
                             <tfoot>
                                 <th colspan="2">Total - {{ $payment_summary['invoices'] }} Payments </th>
-                                <th colspan="2">BDT {{ $payment_summary['amount']}}</th>
+                                <th colspan="2"  class="text-center">BDT {{ $payment_summary['amount']}}</th>
                             </tfoot>
                         </table>
                     </div>
