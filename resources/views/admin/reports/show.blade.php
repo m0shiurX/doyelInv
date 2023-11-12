@@ -112,7 +112,7 @@
                                             {{ $payment->customer->first_name ?? '' }}
                                         </td>
                                         <td class="text-right">
-                                            {{ $payment->amount ?? '' }}
+                                            {{ number_format($payment->amount, 2) ?? '' }}
                                         </td>
                                         <td class="text-center">
                                             {{ $payment->payment_date ?? '' }}
