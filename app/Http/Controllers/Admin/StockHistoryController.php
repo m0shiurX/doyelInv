@@ -8,6 +8,7 @@ use Gate;
 use App\Models\Stock;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Support\Facades\Log;
 
 class StockHistoryController extends Controller
 {
@@ -22,32 +23,32 @@ class StockHistoryController extends Controller
 
     public function updateStockHistory()
     {
+        Log::info('updateStockHistory function started.');
         // Get the current date
-        $currentDate = now()->toDateString();
+        $currentDate = now()->format('Y-m-d');
+
 
         // Check if an entry already exists for today
         $existingEntry = StockHistory::where('date', $currentDate)->first();
 
-        if ($existingEntry) {
-            // Update the existing entry based on the stock at that time
-            $stock = Stock::first(); // Assuming you have only one product
+        $stock = Stock::first();
 
-            $existingEntry->quantity = $stock->quantity;
-            $existingEntry->weight = $stock->weight;
-            $existingEntry->amount = $stock->amount;
-
-
-            $existingEntry->save();
-        } else {
-            // Create a new entry for today
-            $stock = Stock::first(); // Assuming you have only one product
-
+        if ($existingEntry === null) {
             $stockHistory = new StockHistory;
             $stockHistory->quantity = $stock->quantity;
             $stockHistory->weight = $stock->weight;
             $stockHistory->amount = $stock->amount;
-            $stockHistory->date = $currentDate;
+            $stockHistory->date = now()->format('d-m-Y');
             $stockHistory->save();
+        } else {
+            $existingEntry->quantity = $stock->quantity;
+            $existingEntry->weight = $stock->weight;
+            $existingEntry->amount = $stock->amount;
+            $existingEntry->save();
+            
         }
+
+        Log::info('updateStockHistory function completed.');
+        return response()->noContent();
     }
 }
