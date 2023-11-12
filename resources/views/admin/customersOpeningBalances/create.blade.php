@@ -26,7 +26,7 @@
                 </div>
                 <div class="form-group col-6">
                 <label for="calculation_date">{{ trans('cruds.customersOpeningBalance.fields.calculation_date') }}</label>
-                <input class="form-control date {{ $errors->has('calculation_date') ? 'is-invalid' : '' }}" type="text" name="calculation_date" id="calculation_date" value="{{ old('calculation_date', now()->format('Y-m-d')) }}">
+                <input class="form-control date {{ $errors->has('calculation_date') ? 'is-invalid' : '' }}" type="text" name="calculation_date" id="calculation_date" value="{{ old('calculation_date', now()->format('d-m-Y')) }}">
                 @if($errors->has('calculation_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('calculation_date') }}

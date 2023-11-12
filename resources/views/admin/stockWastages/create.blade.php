@@ -11,7 +11,7 @@
             @csrf
             <div class="form-group">
                 <label for="wastage_date">{{ trans('cruds.stockWastage.fields.wastage_date') }}</label>
-                <input class="form-control date {{ $errors->has('wastage_date') ? 'is-invalid' : '' }}" type="text" name="wastage_date" id="wastage_date" value="{{ old('wastage_date', now()->format('Y-m-d')) }}">
+                <input class="form-control date {{ $errors->has('wastage_date') ? 'is-invalid' : '' }}" type="text" name="wastage_date" id="wastage_date" value="{{ old('wastage_date', now()->format('d-m-Y')) }}">
                 @if($errors->has('wastage_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('wastage_date') }}

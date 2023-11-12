@@ -27,7 +27,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label for="payment_date">{{ trans('cruds.payment.fields.payment_date') }}</label>
-                    <input class="form-control date {{ $errors->has('payment_date') ? 'is-invalid' : '' }}" type="text" name="payment_date" id="payment_date" value="{{ old('payment_date', now()->format('Y-m-d')) }}">
+                    <input class="form-control date {{ $errors->has('payment_date') ? 'is-invalid' : '' }}" type="text" name="payment_date" id="payment_date" value="{{ old('payment_date', now()->format('d-m-Y')) }}">
                     @if($errors->has('payment_date'))
                         <div class="invalid-feedback">
                             {{ $errors->first('payment_date') }}

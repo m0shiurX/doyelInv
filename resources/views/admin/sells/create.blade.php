@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group col-6">
                     <label for="invoice_date">{{ trans('cruds.sell.fields.invoice_date') }}</label>
-                    <input class="form-control date {{ $errors->has('invoice_date') ? 'is-invalid' : '' }}" type="text" name="invoice_date" id="invoice_date" value="{{ old('invoice_date', now()->format('Y-m-d')) }}">
+                    <input class="form-control date {{ $errors->has('invoice_date') ? 'is-invalid' : '' }}" type="text" name="invoice_date" id="invoice_date" value="{{ old('invoice_date', now()->format('d-m-Y')) }}">
                     @if($errors->has('invoice_date'))
                         <div class="invalid-feedback">
                             {{ $errors->first('invoice_date') }}
