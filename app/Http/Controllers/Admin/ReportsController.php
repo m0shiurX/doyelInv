@@ -59,7 +59,7 @@ class ReportsController extends Controller
                 $totalPaymentAmount = Payment::whereBetween('payment_date', [$startDate, $endDate])->sum('amount');
 
                 $paymentSummary = [
-                    "type" => "Payment",
+                    "type" => "Payments",
                     "invoices" => ($paymentCount ?? 0),
                     "quantity" => 0,
                     'weight'   => 0,
