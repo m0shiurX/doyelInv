@@ -25,6 +25,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.production.fields.invoice_no') }}
+                        </th>
+                        <td>
+                            {{ $production->invoice_no }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.production.fields.quantity_produced') }}
                         </th>
                         <td>

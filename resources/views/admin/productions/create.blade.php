@@ -11,13 +11,23 @@
             @csrf
             <div class="form-group">
                 <label class="required" for="production_date">{{ trans('cruds.production.fields.production_date') }}</label>
-                <input class="form-control date {{ $errors->has('production_date') ? 'is-invalid' : '' }}" type="text" name="production_date" id="production_date" value="{{ old('production_date', now()->format('Y-m-d')) }}" required>
+                <input class="form-control date {{ $errors->has('production_date') ? 'is-invalid' : '' }}" type="text" name="production_date" id="production_date" value="{{ old('production_date', now()->format('d-m-Y')) }}" required>
                 @if($errors->has('production_date'))
                     <div class="invalid-feedback">
                         {{ $errors->first('production_date') }}
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.production.fields.production_date_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label class="required" for="invoice_no">{{ trans('cruds.production.fields.invoice_no') }}</label>
+                <input class="form-control {{ $errors->has('invoice_no') ? 'is-invalid' : '' }}" type="number" name="invoice_no" id="invoice_no" value="{{ old('invoice_no', '') }}" step="1" required>
+                @if($errors->has('invoice_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('invoice_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.production.fields.invoice_no_helper') }}</span>
             </div>
             <div class="form-group">
                 <label class="required" for="quantity_produced">{{ trans('cruds.production.fields.quantity_produced') }}</label>

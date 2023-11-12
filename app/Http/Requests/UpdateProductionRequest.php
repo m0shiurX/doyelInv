@@ -17,10 +17,17 @@ class UpdateProductionRequest extends FormRequest
     public function rules()
     {
         return [
+            'invoice_no' => [
+                'required',
+                'integer',
+                'min:0',
+                'max:2147483647',
+                'unique:sells,invoice_no',
+            ],
             'quantity_produced' => [
                 'required',
                 'integer',
-                'min:-2147483648',
+                'min:0',
                 'max:2147483647',
             ],
             'weight_produced' => [

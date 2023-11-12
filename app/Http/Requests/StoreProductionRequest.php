@@ -17,6 +17,13 @@ class StoreProductionRequest extends FormRequest
     public function rules()
     {
         return [
+            'invoice_no' => [
+                'required',
+                'integer',
+                'min:0',
+                'max:2147483647',
+                'unique:sells,invoice_no',
+            ],
             'quantity_produced' => [
                 'required',
                 'integer',

@@ -22,6 +22,7 @@ class Production extends Model
     ];
 
     protected $fillable = [
+        'invoice_no',
         'quantity_produced',
         'weight_produced',
         'production_date',

@@ -239,6 +239,8 @@ return [
             'id'                       => 'ID',
             'id_helper'                => ' ',
             'quantity_produced'        => 'Quantity (pcs)',
+            'invoice_no'               => 'Invoice No',
+            'invoice_no_helper'        => '',
             'quantity_produced_helper' => ' ',
             'weight_produced'          => 'Weight (kg)',
             'weight_produced_helper'   => ' ',

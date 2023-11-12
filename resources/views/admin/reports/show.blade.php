@@ -136,7 +136,7 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        {{ trans('cruds.production.fields.id') }}
+                                        {{ trans('cruds.production.fields.invoice_no') }}
                                     </th>
                                     <th>
                                         {{ trans('cruds.production.fields.production_date') }}
@@ -156,7 +156,7 @@
                                 @foreach($production as $key => $prod)
                                     <tr data-entry-id="{{ $prod->id }}">
                                         <td>
-                                            {{ $prod->id ?? '' }}
+                                            {{ $prod->invoice_no ?? '' }}
                                         </td>
                                         <td>
                                             {{ $prod->production_date ?? '' }}

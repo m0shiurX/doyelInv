@@ -21,6 +21,16 @@
                 <span class="help-block">{{ trans('cruds.production.fields.production_date_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="invoice_no">{{ trans('cruds.production.fields.invoice_no') }}</label>
+                <input class="form-control {{ $errors->has('invoice_no') ? 'is-invalid' : '' }}" type="number" name="invoice_no" id="invoice_no" value="{{ old('invoice_no', $production->invoice_no) }}" step="1" required>
+                @if($errors->has('invoice_no'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('invoice_no') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.production.fields.invoice_no_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label class="required" for="quantity_produced">{{ trans('cruds.production.fields.quantity_produced') }}</label>
                 <input class="form-control {{ $errors->has('quantity_produced') ? 'is-invalid' : '' }}" type="number" name="quantity_produced" id="quantity_produced" value="{{ old('quantity_produced', $production->quantity_produced) }}" step="1" required>
                 @if($errors->has('quantity_produced'))
