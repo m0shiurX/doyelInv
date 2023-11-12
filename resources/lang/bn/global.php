@@ -2,7 +2,7 @@
 
 return [
     'actions'                        => 'ক্রিয়াকলাপ',
-    'add'                            => 'যোগ করুন',
+    'add'                            => 'করুন',
     'allRightsReserved'              => 'সমস্ত অধিকার সংরক্ষিত.',
     'areYouSure'                     => 'আপনি কি নিশ্চিত?',
     'clickHereToVerify'              => 'যাচাই করতে এখানে ক্লিক করুন',

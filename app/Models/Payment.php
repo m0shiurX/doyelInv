@@ -39,6 +39,12 @@ class Payment extends Model
     {
         return $this->belongsTo(CrmCustomer::class, 'customer_id');
     }
+    public function getPaymentDateAttribute($value)
+    {
+        return $value ? Carbon::parse($value)->format(config('panel.date_format')) : null;
+    }
+
+
     public function setPaymentDateAttribute($value)
     {
         $this->attributes['payment_date'] = $value ? Carbon::createFromFormat(config('panel.date_format'), $value)->format('Y-m-d') : null;
