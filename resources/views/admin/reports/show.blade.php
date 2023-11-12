@@ -75,7 +75,7 @@
                                 <th colspan="3">Total - {{ $invoice_summary['invoices'] }} Invoices </th>
                                 <th class="text-right">{{ $invoice_summary['quantity']}}</th>
                                 <th class="text-right">{{ number_format($invoice_summary['weight'], 2)}}</th>
-                                <th class="text-right">{{ $invoice_summary['amount']}}</th>
+                                <th class="text-right">{{ number_format($invoice_summary['amount'], 2)}}</th>
                             </tfoot>
                         </table>
                     </div>
@@ -122,7 +122,7 @@
                             </tbody>
                             <tfoot>
                                 <th colspan="2">Total - {{ $payment_summary['invoices'] }} Payments </th>
-                                <th colspan="2"  class="text-center">BDT {{ $payment_summary['amount']}}</th>
+                                <th colspan="2"  class="text-center">BDT {{ number_format($payment_summary['amount'], 2)}}</th>
                             </tfoot>
                         </table>
                     </div>
@@ -177,7 +177,7 @@
                                 <th colspan="2">Total - {{ $production_summary['invoices'] }} Invoices </th>
                                 <th class="text-right">{{ $production_summary['quantity']}}</th>
                                 <th class="text-right">{{ number_format($production_summary['weight'], 2)}}</th>
-                                <th class="text-right">{{ $production_summary['amount']}}</th>
+                                <th class="text-right">{{ number_format($production_summary['amount'], 2)}}</th>
                             </tfoot>
                         </table>
                     </div>
@@ -204,7 +204,7 @@
                                     <td class="text-right">{{ $summary['invoices'] }}</td>
                                     <td class="text-right">{{ $summary['quantity'] }}</td>
                                     <td class="text-right">{{ number_format($summary['weight'], 2) }}</td>
-                                    <td class="text-right">{{ $summary['amount'] }}</td>
+                                    <td class="text-right">{{ number_format($summary['amount'], 2) }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
