@@ -59,13 +59,13 @@
                                             {{ $sale->customer->account_no ?? '' }} - 
                                             {{ $sale->customer->first_name ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             {{ $sale->quantity ?? '' }}
                                         </td>
-                                        <td>
-                                            {{ $sale->weight ?? '' }}
+                                        <td class="text-right">
+                                            {{ number_format($sale->weight, 2) ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             {{ $sale->total_amount ?? '' }}
                                         </td>
                                     </tr>
@@ -111,7 +111,7 @@
                                         <td>
                                             {{ $payment->customer->first_name ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             {{ $payment->amount ?? '' }}
                                         </td>
                                         <td>
@@ -161,13 +161,13 @@
                                         <td>
                                             {{ $prod->production_date ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             {{ $prod->quantity_produced ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             {{ $prod->weight_produced ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-right">
                                             {{ $prod->total_amount ?? '' }}
                                         </td>
                                     </tr>
@@ -175,9 +175,9 @@
                             </tbody>
                              <tfoot>
                                 <th colspan="2">Total - {{ $production_summary['invoices'] }} Invoices </th>
-                                <th>{{ $production_summary['quantity']}}</th>
-                                <th>{{ $production_summary['weight']}}</th>
-                                <th>{{ $production_summary['amount']}}</th>
+                                <th class="text-right">{{ $production_summary['quantity']}}</th>
+                                <th class="text-right">{{ $production_summary['weight']}}</th>
+                                <th class="text-right">{{ $production_summary['amount']}}</th>
                             </tfoot>
                         </table>
                     </div>
@@ -201,10 +201,10 @@
                                 @foreach ($summaries as $summary)
                                 <tr>
                                     <th>{{ $summary['type'] }}</th>
-                                    <td>{{ $summary['invoices'] }}</td>
-                                    <td>{{ $summary['quantity'] }}</td>
-                                    <td>{{ $summary['weight'] }}</td>
-                                    <td>{{ $summary['amount'] }}</td>
+                                    <td class="text-right">{{ $summary['invoices'] }}</td>
+                                    <td class="text-right">{{ $summary['quantity'] }}</td>
+                                    <td class="text-right">{{ $summary['weight'] }}</td>
+                                    <td class="text-right">{{ $summary['amount'] }}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
