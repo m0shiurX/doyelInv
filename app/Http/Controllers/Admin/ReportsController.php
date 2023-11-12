@@ -30,8 +30,8 @@ class ReportsController extends Controller
                 // If validation fails, redirect back to the form with errors
                 return redirect()->route('admin.reports')->withInput()->withErrors($validator);
             } else {
-                $startDate = $request->input('start_date');
-                $endDate = $request->input('end_date');
+                $startDate = date('Y-m-d', strtotime($request->input('start_date')));
+                $endDate = date('Y-m-d', strtotime($request->input('end_date')));
 
                 $date_range = $startDate . ' - ' . $endDate;
 
