@@ -47,10 +47,10 @@ class ReportsController extends Controller
                 $totalInvoiceAmount = Sell::whereBetween('invoice_date', [$startDate, $endDate])->sum('total_amount');
                 $invoiceSummary = [
                     "type" => "Sales",
-                    "invoices" => ($invoiceCount ?? '0'),
-                    "quantity" => ($totalInvoiceQuantity ?? '0'),
-                    'weight'   => ($totalInvoiceWeight ?? '0'),
-                    'amount'   => ($totalInvoiceAmount ?? '0'),
+                    "invoices" => ($invoiceCount ?? 0),
+                    "quantity" => ($totalInvoiceQuantity ?? 0),
+                    'weight'   => ($totalInvoiceWeight ?? 0),
+                    'amount'   => ($totalInvoiceAmount ?? 0),
                 ];
 
 
@@ -60,10 +60,10 @@ class ReportsController extends Controller
 
                 $paymentSummary = [
                     "type" => "Payment",
-                    "invoices" => ($paymentCount ?? '0'),
-                    "quantity" => '',
-                    'weight'   => '',
-                    'amount'   => ($totalPaymentAmount ?? '0'),
+                    "invoices" => ($paymentCount ?? 0),
+                    "quantity" => 0,
+                    'weight'   => 0,
+                    'amount'   => ($totalPaymentAmount ?? 0),
                 ];
 
                 // Production Summary
@@ -74,10 +74,10 @@ class ReportsController extends Controller
 
                 $productionSummary = [
                     "type" => "Production",
-                    "invoices" => ($productionCount ?? '0'),
-                    "quantity" => ($totalProductionQuantity ?? '0'),
-                    'weight'   => ($totalProductionWeight ?? '0'),
-                    'amount'   => ($totalProductionAmount ?? '0'),
+                    "invoices" => ($productionCount ?? 0),
+                    "quantity" => ($totalProductionQuantity ?? 0),
+                    'weight'   => ($totalProductionWeight ?? 0),
+                    'amount'   => ($totalProductionAmount ?? 0),
                 ];
                 $summaries = [
                     $invoiceSummary, $paymentSummary, $productionSummary

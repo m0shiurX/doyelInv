@@ -35,13 +35,13 @@
                                     <th>
                                         {{ trans('cruds.sell.fields.customer') }}
                                     </th>
-                                    <th>
+                                    <th  class="text-center">
                                         {{ trans('cruds.sell.fields.quantity') }}
                                     </th>
-                                    <th>
+                                    <th  class="text-center">
                                         {{ trans('cruds.sell.fields.weight') }}
                                     </th>
-                                    <th>
+                                    <th  class="text-center">
                                         {{ trans('cruds.sell.fields.total_amount') }}
                                     </th>
                                 </tr>
@@ -73,9 +73,9 @@
                             </tbody>
                             <tfoot>
                                 <th colspan="3">Total - {{ $invoice_summary['invoices'] }} Invoices </th>
-                                <th>{{ $invoice_summary['quantity']}}</th>
-                                <th>{{ $invoice_summary['weight']}}</th>
-                                <th>{{ $invoice_summary['amount']}}</th>
+                                <th class="text-right">{{ $invoice_summary['quantity']}}</th>
+                                <th class="text-right">{{ number_format($invoice_summary['weight'], 2)}}</th>
+                                <th class="text-right">{{ $invoice_summary['amount']}}</th>
                             </tfoot>
                         </table>
                     </div>
@@ -94,10 +94,10 @@
                                     <th>
                                         {{ trans('cruds.payment.fields.customer') }}
                                     </th>
-                                    <th>
+                                    <th  class="text-center">
                                         {{ trans('cruds.payment.fields.amount') }}
                                     </th>
-                                    <th>
+                                    <th  class="text-center">
                                         {{ trans('cruds.payment.fields.payment_date') }}
                                     </th>
                                 </tr>
@@ -114,7 +114,7 @@
                                         <td class="text-right">
                                             {{ $payment->amount ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{ $payment->payment_date ?? '' }}
                                         </td>
                                     </tr>
@@ -138,16 +138,16 @@
                                     <th>
                                         {{ trans('cruds.production.fields.invoice_no') }}
                                     </th>
-                                    <th>
+                                    <th class="text-center">
                                         {{ trans('cruds.production.fields.production_date') }}
                                     </th>
-                                    <th>
-                                        {{ trans('cruds.production.fields.quantity_produced') }}
+                                    <th class="text-center">
+                                         {{ trans('cruds.production.fields.quantity_produced') }}
                                     </th>
-                                    <th>
+                                    <th class="text-center">
                                         {{ trans('cruds.production.fields.weight_produced') }}
                                     </th>
-                                    <th>
+                                    <th class="text-center">
                                         {{ trans('cruds.production.fields.total_amount') }}
                                     </th>
                                 </tr>
@@ -158,14 +158,14 @@
                                         <td>
                                             {{ $prod->invoice_no ?? '' }}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             {{ $prod->production_date ?? '' }}
                                         </td>
                                         <td class="text-right">
                                             {{ $prod->quantity_produced ?? '' }}
                                         </td>
                                         <td class="text-right">
-                                            {{ $prod->weight_produced ?? '' }}
+                                            {{ number_format($prod->weight_produced, 2) ?? '' }}
                                         </td>
                                         <td class="text-right">
                                             {{ $prod->total_amount ?? '' }}
@@ -176,7 +176,7 @@
                              <tfoot>
                                 <th colspan="2">Total - {{ $production_summary['invoices'] }} Invoices </th>
                                 <th class="text-right">{{ $production_summary['quantity']}}</th>
-                                <th class="text-right">{{ $production_summary['weight']}}</th>
+                                <th class="text-right">{{ number_format($production_summary['weight'], 2)}}</th>
                                 <th class="text-right">{{ $production_summary['amount']}}</th>
                             </tfoot>
                         </table>
@@ -191,10 +191,10 @@
                             <thead>
                                 <tr>
                                     <th>Category</th>
-                                    <th>Invoices</th>
-                                    <th>Quantity</th>
-                                    <th>Weight</th>
-                                    <th>Total Amount</th>
+                                    <th class="text-center">Invoices</th>
+                                    <th class="text-center">Quantity</th>
+                                    <th class="text-center">Weight</th>
+                                    <th class="text-center">Total Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -203,7 +203,7 @@
                                     <th>{{ $summary['type'] }}</th>
                                     <td class="text-right">{{ $summary['invoices'] }}</td>
                                     <td class="text-right">{{ $summary['quantity'] }}</td>
-                                    <td class="text-right">{{ $summary['weight'] }}</td>
+                                    <td class="text-right">{{ number_format($summary['weight'], 2) }}</td>
                                     <td class="text-right">{{ $summary['amount'] }}</td>
                                 </tr>
                                 @endforeach
