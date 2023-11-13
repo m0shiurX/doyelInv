@@ -85,13 +85,18 @@
 
         <div class="c-body">
             <main class="c-main">
-
-
                 <div class="container-fluid">
                     @if(session('message'))
                         <div class="row mb-2">
                             <div class="col-lg-12">
                                 <div class="alert alert-success" role="alert">{{ session('message') }}</div>
+                            </div>
+                        </div>
+                    @endif
+                    @if(session('error'))
+                        <div class="row mb-2">
+                            <div class="col-lg-12">
+                                <div class="alert alert-danger" role="alert">{{ session('error') }}</div>
                             </div>
                         </div>
                     @endif

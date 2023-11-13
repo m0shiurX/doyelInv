@@ -22,6 +22,9 @@
                         <th width="10">
                         </th>
                         <th>
+                            {{ trans('cruds.sell.fields.id') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.sell.fields.invoice_no') }}
                         </th>
                         <th>
@@ -47,6 +50,8 @@
                         <td>
                         </td>
                         <td>
+                        </td>
+                        <td>
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
@@ -69,6 +74,9 @@
                     @foreach($sells as $key => $sell)
                         <tr data-entry-id="{{ $sell->id }}">
                             <td>
+                            </td>
+                            <td>
+                                {{ $sell->id ?? '' }}
                             </td>
                             <td>
                                 {{ $sell->invoice_no ?? '' }}

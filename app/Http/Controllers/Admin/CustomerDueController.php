@@ -15,9 +15,10 @@ class CustomerDueController extends Controller
         abort_if(Gate::denies('customer_due_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
         $customerDues = CustomerDue::with(['customer'])->get();
+        $totalDues = CustomerDue::sum('customer_dues');
 
         $crm_customers = CrmCustomer::get();
 
-        return view('admin.customerDues.index', compact('crm_customers', 'customerDues'));
+        return view('admin.customerDues.index', compact('crm_customers', 'customerDues', 'totalDues'));
     }
 }

@@ -55,6 +55,38 @@
             </div>
         </div>
     </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold">
+                    <span class="text-muted">Toal</span> Sales Today (BDT)
+                </div>
+                <div class="card-body">
+                    <div class="big_number text-nowrap text-truncate">{{ number_format($salesToday,0) ?? '' }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold">
+                    <span class="text-muted">Toal</span> Payments Today (BDT)
+                </div>
+                <div class="card-body">
+                    <div class="big_number text-nowrap text-truncate">{{ number_format($paymentsToday,0) ?? '' }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header text-center font-weight-bold">
+                    <span class="text-muted">Toal</span> Customer Dues (BDT)
+                </div>
+                <div class="card-body">
+                    <div class="big_number text-nowrap text-truncate">{{ number_format($totalDues,0) ?? '' }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('scripts')

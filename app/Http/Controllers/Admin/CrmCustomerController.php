@@ -8,6 +8,7 @@ use App\Http\Requests\StoreCrmCustomerRequest;
 use App\Http\Requests\UpdateCrmCustomerRequest;
 use App\Models\CrmCustomer;
 use App\Models\CrmStatus;
+use App\Models\CustomerDue;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +20,7 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $crmCustomers = CrmCustomer::with(['status'])->get();
+        $crmCustomers = CrmCustomer::with(['status'])->orderBy('account_no')->get();
 
         return view('admin.crmCustomers.index', compact('crmCustomers'));
     }
@@ -34,7 +35,9 @@ class CrmCustomerController extends Controller
     public function store(StoreCrmCustomerRequest $request)
     {
         $crmCustomer = CrmCustomer::create($request->all());
+
         event(new CustomerCreated($crmCustomer)); // Dispatch the event
+
         return redirect()->route('admin.crm-customers.index');
     }
 
@@ -69,9 +72,17 @@ class CrmCustomerController extends Controller
     {
         abort_if(Gate::denies('crm_customer_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        if ($crmCustomer->customerSells()->count() > 0 || $crmCustomer->customerPayments()->count() > 0) {
+            return back()
+                ->with('error', 'Cannot delete customer that has sales or payments invoice.');
+
+            // Then, just show the session('error') in the Blade
+        }
+
+        CustomerDue::where('customer_id', $crmCustomer->id)->delete();
         $crmCustomer->delete();
 
-        return back();
+        return back()->with('message', 'Successfully deleted.');;
     }
 
     public function massDestroy(MassDestroyCrmCustomerRequest $request)

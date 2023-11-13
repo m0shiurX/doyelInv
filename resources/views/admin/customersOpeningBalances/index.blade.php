@@ -43,7 +43,6 @@
                     @foreach($customersOpeningBalances as $key => $customersOpeningBalance)
                         <tr data-entry-id="{{ $customersOpeningBalance->id }}">
                             <td>
-
                             </td>
                             <td>
                                 {{ $customersOpeningBalance->id ?? '' }}
@@ -82,7 +81,7 @@
   
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 2, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-CustomersOpeningBalance:not(.ajaxTable)').DataTable({ buttons: dtButtons })

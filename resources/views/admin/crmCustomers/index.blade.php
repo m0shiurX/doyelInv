@@ -148,7 +148,7 @@
 
   $.extend(true, $.fn.dataTable.defaults, {
     orderCellsTop: true,
-    order: [[ 1, 'desc' ]],
+    order: [[ 3, 'asc' ]],
     pageLength: 100,
   });
   let table = $('.datatable-CrmCustomer:not(.ajaxTable)').DataTable({ buttons: dtButtons })
