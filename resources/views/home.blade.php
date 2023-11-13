@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="big_number">{{ $stock->quantity ?? '' }}</div>
+                    <div class="big_number text-nowrap text-truncate">{{ $stock->quantity ?? '' }}</div>
                 </div>
             </div>
         </div>
@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="big_number">{{ $stock->weight ?? '' }}</div>
+                    <div class="big_number text-nowrap text-truncate">{{ number_format($stock->weight,0) ?? '' }}</div>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
 
                 <div class="card-body">
                     
-                    <div class="big_number">{{ $stock->amount ?? '' }}</div>
+                    <div class="big_number text-nowrap text-truncate">{{ number_format($stock->amount, 0) ?? '' }}</div>
                 </div>
             </div>
         </div>
