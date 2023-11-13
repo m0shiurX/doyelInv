@@ -14,7 +14,7 @@
             <div class="card col-12 col-md-12 col-lg-12">
                 <div class="card-header">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h4 class="">Reports generated for <span class="text-muted"> {{ $date_range }}</span>. </h4>
+                        <h4 class="font-lg">Reports generated for <br class="d-md-none"> <span class="text-muted"> {{ $date_range }}</span>. </h4>
                         <button class="d-btn btn-info d-print-none" onclick="window.print()"> Print </button>
                     </div>
                 </div>

@@ -149,6 +149,12 @@ caption {
 	font-size: medium;
 }
 
+/* Dashboard */
+.big_number {
+	font-size: 3rem;
+	font-weight: 500;
+	text-align: center;
+}
 /* print */
 @media print {
 	.c-wrapper {
