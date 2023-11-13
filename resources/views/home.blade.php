@@ -27,7 +27,7 @@
                 </div>
 
                 <div class="card-body">
-                    <div class="big_number text-nowrap text-truncate">{{ $stock->quantity ?? '' }}</div>
+                    <div class="big_number text-nowrap text-truncate">{{ number_format($stock->quantity,0) ?? '' }}</div>
                 </div>
             </div>
         </div>
