@@ -12,8 +12,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('db:dump')->daily();
-        $schedule->call('App\Http\Controllers\Admin\StockHistoryController@updateStockHistory')->daily();
+        $schedule->command('db:dump')->dailyAt('17:45');
+        $schedule->call('App\Http\Controllers\Admin\StockHistoryController@updateStockHistory')->dailyAt('17:45');
     }
 
     /**

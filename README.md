@@ -8,3 +8,7 @@ Changes to be made:
 [] Reports to be generated for daily, monthly and yearly
 [] Reports to be sent by email and automatically backed up in server.
 [] SMS notification integration
+
+App\Models\CrmCustomer::where('id',1)->withTrashed()->get();
+App\Models\CustomerDue::where('id',1)->delete();
+App\Models\CustomerDue::where('id',1)->get();
